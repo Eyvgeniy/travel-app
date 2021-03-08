@@ -20,7 +20,7 @@ export function Slider() {
     slides.push(
       <SwiperSlide key={`slide-${i}`}>
         <img
-          src={`../../src/assets/img/country/brit_${i}.jpg`}
+          src={`../../public/assets/img/country/brit_${i}.jpg`}
           alt={`Slide ${i}`}
         />
       </SwiperSlide>,
@@ -32,7 +32,7 @@ export function Slider() {
     thumbs.push(
       <SwiperSlide key={`thumb-${i}`}>
         <img
-          src={`../../src/assets/img/country/brit_${i}.jpg`}
+          src={`../../public/assets/img/country/brit_${i}.jpg`}
           alt={`Thumbnail ${i}`}
         />
       </SwiperSlide>,
