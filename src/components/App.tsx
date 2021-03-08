@@ -1,16 +1,17 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-
-const reactLogo = require("./../assets/img/react_logo.svg");
+import {Cards} from "./cards/Cards"
+import {Header} from "./header/Header"
 import "./../assets/scss/App.scss";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component<Record<string, unknown>, undefined> {
   public render() {
     return (
       <div className="app">
-        <h1>Hello World!</h1>
-        <p>Foo to the barz</p>
-        <img src={reactLogo.default} height="480" />
+        <Header />
+        <Cards />
+        <footer></footer>
       </div>
     );
   }
