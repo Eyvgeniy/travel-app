@@ -1,9 +1,10 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import {Cards} from "./cards/Cards"
-import {Header} from "./header/Header"
+import { Cards } from "./cards/Cards";
+import { Header } from "./header/Header";
+import { Slider } from "./slider/Slider";
 //import {Slider} from "./slider/Slider"
-import "./../assets/scss/App.scss";
+import "../../public/assets/scss/App.scss";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component<Record<string, unknown>, undefined> {
@@ -12,6 +13,7 @@ class App extends React.Component<Record<string, unknown>, undefined> {
       <div className="app">
         <Header />
         <Cards />
+        <Slider />
         <footer></footer>
       </div>
     );
