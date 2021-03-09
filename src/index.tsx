@@ -12,12 +12,22 @@ const init = async () => {
   const rootEl = document.getElementById("root");
 
   const f = async () => {
-    const res = await fetch(routes.getCountries());
-    const data = await res.json();
+    try {
+      const res = await fetch(routes.getCountries());
+      const data = await res.json();
 
-    return await { countries: data };
+      return await { countries: data };
+    } catch (err) {
+      console.log(err);
+    }
   };
-  const preloadedState = await f();
+  const countries = await f();
+  const preloadedState = countries || {
+    countries: {
+      list: [],
+      actualId: null,
+    },
+  };
 
   const store = configureStore({
     reducer: rootReducer,
