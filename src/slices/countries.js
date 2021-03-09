@@ -3,13 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import routes from "../routes";
 
-const initId = 1;
-
 const countriesSlice = createSlice({
   name: "countries",
   initialState: {
     list: [],
-    actualId: initId,
+    actualId: null,
   },
   reducers: {
     getCountries(state, action) {

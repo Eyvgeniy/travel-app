@@ -1,7 +1,12 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const { dataBase } = require("./countriesDB");
 
 const localeSchema = new Schema({
   _id: false,
+  lang: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -32,7 +37,7 @@ const countrySchema = new Schema({
   capitalLocation: {
     type: {
       type: String,
-      enum: ['Point'],
+      enum: ["Point"],
       required: true,
     },
     coordinates: {
@@ -43,6 +48,11 @@ const countrySchema = new Schema({
   localizations: [localeSchema],
 });
 
-const Country = model('Country', countrySchema);
+const Country = model("Country", countrySchema);
 
 module.exports = Country;
+
+// dataBase.forEach((data) => {
+//   const country = new Country(data);
+//   country.save();
+// });
