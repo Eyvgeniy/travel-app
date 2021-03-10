@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const { places } = require("./places");
 
 const placeLocaleSchema = new Schema({
   _id: false,
@@ -18,6 +19,6 @@ const placeSchema = new Schema({
   localizations: [placeLocaleSchema],
 });
 
-const Place = model('Place', placeSchema);
+const Place = model("Place", placeSchema);
 
 module.exports = Place;
