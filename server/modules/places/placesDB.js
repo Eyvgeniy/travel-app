@@ -1,6 +1,6 @@
 const places = [
   {
-    countryId: "Лондон",
+    countryId: "6048e0065c5cdc2896539424",
     imageUrl: "/public/assets/images/country/brit_1",
     localizations: [
       {
@@ -24,7 +24,7 @@ const places = [
     ],
   },
   {
-    countryId: "Лондон",
+    countryId: "6048e0065c5cdc2896539424",
     imageUrl: "/public/assets/images/country/brit_2",
     localizations: [
       {
@@ -48,7 +48,7 @@ const places = [
     ],
   },
   {
-    countryId: "Лондон",
+    countryId: "6048e0065c5cdc2896539424",
     imageUrl: "/public/assets/images/country/brit_3",
     localizations: [
       {
@@ -72,7 +72,7 @@ const places = [
     ],
   },
   {
-    countryId: "Лондон",
+    countryId: "6048e0065c5cdc2896539424",
     imageUrl: "/public/assets/images/country/brit_4",
     localizations: [
       {
@@ -96,7 +96,7 @@ const places = [
     ],
   },
   {
-    countryId: "Лондон",
+    countryId: "6048e0065c5cdc2896539424",
     imageUrl: "/public/assets/images/country/brit_5",
     localizations: [
       {
@@ -120,7 +120,7 @@ const places = [
     ],
   },
   {
-    countryId: "Лондон",
+    countryId: "6048e0065c5cdc2896539424",
     imageUrl: "/public/assets/images/country/brit_6",
     localizations: [
       {
@@ -144,7 +144,7 @@ const places = [
     ],
   },
   {
-    countryId: "Германия",
+    countryId: "6048e0065c5cdc2896539425",
     imageUrl: "/public/assets/images/country/ger_1",
     localizations: [
       {
@@ -168,7 +168,7 @@ const places = [
     ],
   },
   {
-    countryId: "Германия",
+    countryId: "6048e0065c5cdc2896539425",
     imageUrl: "/public/assets/images/country/ger_2",
     localizations: [
       {
@@ -192,7 +192,7 @@ const places = [
     ],
   },
   {
-    countryId: "Германия",
+    countryId: "6048e0065c5cdc2896539425",
     imageUrl: "/public/assets/images/country/ger_3",
     localizations: [
       {
@@ -216,7 +216,7 @@ const places = [
     ],
   },
   {
-    countryId: "Германия",
+    countryId: "6048e0065c5cdc2896539425",
     imageUrl: "/public/assets/images/country/ger_4",
     localizations: [
       {
@@ -240,7 +240,7 @@ const places = [
     ],
   },
   {
-    countryId: "Германия",
+    countryId: "6048e0065c5cdc2896539425",
     imageUrl: "/public/assets/images/country/ger_5",
     localizations: [
       {
@@ -264,7 +264,7 @@ const places = [
     ],
   },
   {
-    countryId: "Германия",
+    countryId: "6048e0065c5cdc2896539425",
     imageUrl: "/public/assets/images/country/ger_6",
     localizations: [
       {
@@ -288,7 +288,7 @@ const places = [
     ],
   },
   {
-    countryId: "Испания",
+    countryId: "6048e0065c5cdc2896539426",
     imageUrl: "/public/assets/images/country/spain_1",
     localizations: [
       {
@@ -312,7 +312,7 @@ const places = [
     ],
   },
   {
-    countryId: "Испания",
+    countryId: "6048e0065c5cdc2896539426",
     imageUrl: "/public/assets/images/country/spain_2",
     localizations: [
       {
@@ -336,7 +336,7 @@ const places = [
     ],
   },
   {
-    countryId: "Испания",
+    countryId: "6048e0065c5cdc2896539426",
     imageUrl: "/public/assets/images/country/spain_3",
     localizations: [
       {
@@ -360,7 +360,7 @@ const places = [
     ],
   },
   {
-    countryId: "Испания",
+    countryId: "6048e0065c5cdc2896539426",
     imageUrl: "/public/assets/images/country/spain_4",
     localizations: [
       {
@@ -384,7 +384,7 @@ const places = [
     ],
   },
   {
-    countryId: "Испания",
+    countryId: "6048e0065c5cdc2896539426",
     imageUrl: "/public/assets/images/country/spain_5",
     localizations: [
       {
@@ -408,7 +408,7 @@ const places = [
     ],
   },
   {
-    countryId: "Испания",
+    countryId: "6048e0065c5cdc2896539426",
     imageUrl: "/public/assets/images/country/spain_6",
     localizations: [
       {
@@ -432,7 +432,7 @@ const places = [
     ],
   },
   {
-    countryId: "Италия",
+    countryId: "6048e0065c5cdc289653942b",
     imageUrl: "/public/assets/images/country/italy_1",
     localizations: [
       {
@@ -456,7 +456,7 @@ const places = [
     ],
   },
   {
-    countryId: "Италия",
+    countryId: "6048e0065c5cdc289653942b",
     imageUrl: "/public/assets/images/country/italy_2",
     localizations: [
       {
@@ -480,7 +480,7 @@ const places = [
     ],
   },
   {
-    countryId: "Италия",
+    countryId: "6048e0065c5cdc289653942b",
     imageUrl: "/public/assets/images/country/italy_3",
     localizations: [
       {
@@ -504,7 +504,7 @@ const places = [
     ],
   },
   {
-    countryId: "Италия",
+    countryId: "6048e0065c5cdc289653942b",
     imageUrl: "/public/assets/images/country/italy_4",
     localizations: [
       {
@@ -528,7 +528,7 @@ const places = [
     ],
   },
   {
-    countryId: "Италия",
+    countryId: "6048e0065c5cdc289653942b",
     imageUrl: "/public/assets/images/country/italy_5",
     localizations: [
       {
@@ -552,7 +552,7 @@ const places = [
     ],
   },
   {
-    countryId: "Италия",
+    countryId: "6048e0065c5cdc289653942b",
     imageUrl: "/public/assets/images/country/italy_6",
     localizations: [
       {
@@ -576,7 +576,7 @@ const places = [
     ],
   },
   {
-    countryId: "Франция",
+    countryId: "6048e0065c5cdc2896539427",
     imageUrl: "/public/assets/images/country/fran_1",
     localizations: [
       {
@@ -600,7 +600,7 @@ const places = [
     ],
   },
   {
-    countryId: "Франция",
+    countryId: "6048e0065c5cdc2896539427",
     imageUrl: "/public/assets/images/country/fran_2",
     localizations: [
       {
@@ -624,7 +624,7 @@ const places = [
     ],
   },
   {
-    countryId: "Франция",
+    countryId: "6048e0065c5cdc2896539427",
     imageUrl: "/public/assets/images/country/fran_3",
     localizations: [
       {
@@ -648,7 +648,7 @@ const places = [
     ],
   },
   {
-    countryId: "Франция",
+    countryId: "6048e0065c5cdc2896539427",
     imageUrl: "/public/assets/images/country/fran_4",
     localizations: [
       {
@@ -672,7 +672,7 @@ const places = [
     ],
   },
   {
-    countryId: "Франция",
+    countryId: "6048e0065c5cdc2896539427",
     imageUrl: "/public/assets/images/country/fran_5",
     localizations: [
       {
@@ -696,7 +696,7 @@ const places = [
     ],
   },
   {
-    countryId: "Франция",
+    countryId: "6048e0065c5cdc2896539427",
     imageUrl: "/public/assets/images/country/fran_6",
     localizations: [
       {
@@ -720,7 +720,7 @@ const places = [
     ],
   },
   {
-    countryId: "Китай",
+    countryId: "6048e0065c5cdc2896539428",
     imageUrl: "/public/assets/images/country/chan_1",
     localizations: [
       {
@@ -744,7 +744,7 @@ const places = [
     ],
   },
   {
-    countryId: "Китай",
+    countryId: "6048e0065c5cdc2896539428",
     imageUrl: "/public/assets/images/country/chan_2",
     localizations: [
       {
@@ -768,7 +768,7 @@ const places = [
     ],
   },
   {
-    countryId: "Китай",
+    countryId: "6048e0065c5cdc2896539428",
     imageUrl: "/public/assets/images/country/chan_3",
     localizations: [
       {
@@ -792,7 +792,7 @@ const places = [
     ],
   },
   {
-    countryId: "Китай",
+    countryId: "6048e0065c5cdc2896539428",
     imageUrl: "/public/assets/images/country/chan_4",
     localizations: [
       {
@@ -816,7 +816,7 @@ const places = [
     ],
   },
   {
-    countryId: "Китай",
+    countryId: "6048e0065c5cdc2896539428",
     imageUrl: "/public/assets/images/country/chan_5",
     localizations: [
       {
@@ -840,7 +840,7 @@ const places = [
     ],
   },
   {
-    countryId: "Китай",
+    countryId: "6048e0065c5cdc2896539428",
     imageUrl: "/public/assets/images/country/chan_6",
     localizations: [
       {
@@ -864,7 +864,7 @@ const places = [
     ],
   },
   {
-    countryId: "Индия",
+    countryId: "6048e0065c5cdc2896539429",
     imageUrl: "/public/assets/images/country/ind_1",
     localizations: [
       {
@@ -888,7 +888,7 @@ const places = [
     ],
   },
   {
-    countryId: "Индия",
+    countryId: "6048e0065c5cdc2896539429",
     imageUrl: "/public/assets/images/country/ind_2",
     localizations: [
       {
@@ -912,7 +912,7 @@ const places = [
     ],
   },
   {
-    countryId: "Индия",
+    countryId: "6048e0065c5cdc2896539429",
     imageUrl: "/public/assets/images/country/ind_3",
     localizations: [
       {
@@ -936,7 +936,7 @@ const places = [
     ],
   },
   {
-    countryId: "Индия",
+    countryId: "6048e0065c5cdc2896539429",
     imageUrl: "/public/assets/images/country/ind_4",
     localizations: [
       {
@@ -960,7 +960,7 @@ const places = [
     ],
   },
   {
-    countryId: "Индия",
+    countryId: "6048e0065c5cdc2896539429",
     imageUrl: "/public/assets/images/country/ind_5",
     localizations: [
       {
@@ -984,7 +984,7 @@ const places = [
     ],
   },
   {
-    countryId: "Индия",
+    countryId: "6048e0065c5cdc2896539429",
     imageUrl: "/public/assets/images/country/ind_6",
     localizations: [
       {
@@ -1008,7 +1008,7 @@ const places = [
     ],
   },
   {
-    countryId: "США",
+    countryId: "6048e0065c5cdc289653942a",
     imageUrl: "/public/assets/images/country/usa_1",
     localizations: [
       {
@@ -1032,7 +1032,7 @@ const places = [
     ],
   },
   {
-    countryId: "США",
+    countryId: "6048e0065c5cdc289653942a",
     imageUrl: "/public/assets/images/country/usa_2",
     localizations: [
       {
@@ -1055,7 +1055,7 @@ const places = [
     ],
   },
   {
-    countryId: "США",
+    countryId: "6048e0065c5cdc289653942a",
     imageUrl: "/public/assets/images/country/usa_3",
     localizations: [
       {
@@ -1079,7 +1079,7 @@ const places = [
     ],
   },
   {
-    countryId: "США",
+    countryId: "6048e0065c5cdc289653942a",
     imageUrl: "/public/assets/images/country/usa_4",
     localizations: [
       {
@@ -1103,7 +1103,7 @@ const places = [
     ],
   },
   {
-    countryId: "США",
+    countryId: "6048e0065c5cdc289653942a",
     imageUrl: "/public/assets/images/country/usa_5",
     localizations: [
       {
@@ -1127,7 +1127,7 @@ const places = [
     ],
   },
   {
-    countryId: "США",
+    countryId: "6048e0065c5cdc289653942a",
     imageUrl: "/public/assets/images/country/usa_6",
     localizations: [
       {
