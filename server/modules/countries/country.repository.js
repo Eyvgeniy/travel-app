@@ -1,10 +1,10 @@
-const Country = require('./country.schema');
-const { NotFoundError } = require('../../common/errors/errors-list');
-const { ENTITY_NAME } = require('./constants');
+const Country = require("./country.schema");
+const { NotFoundError } = require("../../common/errors/errors-list");
+const { ENTITY_NAME } = require("./constants");
 const {
   COLLECTION_NAME: PLACE_COLLECTION_NAME,
-} = require('../places/constants');
-const { Types } = require('mongoose');
+} = require("../places/constants");
+const { Types } = require("mongoose");
 
 const countryExcludedFields = { _id: 0, __v: 0, lang: 0, localizations: 0 };
 const placeExcludedFields = { _id: 0, countryId: 0, lang: 0, localizations: 0 };
@@ -12,10 +12,10 @@ const placeExcludedFields = { _id: 0, countryId: 0, lang: 0, localizations: 0 };
 const getAllByLang = async (lang) => {
   return await Country.aggregate()
     .match({ localizations: { $elemMatch: { lang } } })
-    .unwind('localizations')
-    .match({ 'localizations.lang': lang })
+    .unwind("localizations")
+    .match({ "localizations.lang": lang })
     .replaceRoot({
-      $mergeObjects: [{ id: '$_id' }, '$localizations', '$$ROOT'],
+      $mergeObjects: [{ id: "$_id" }, "$localizations", "$$ROOT"],
     })
     .project(countryExcludedFields);
 };
@@ -23,10 +23,10 @@ const getAllByLang = async (lang) => {
 const getOneByLang = async (id, lang) => {
   const data = await Country.aggregate()
     .match({ _id: Types.ObjectId(id) })
-    .unwind('localizations')
-    .match({ 'localizations.lang': lang })
+    .unwind("localizations")
+    .match({ "localizations.lang": lang })
     .replaceRoot({
-      $mergeObjects: [{ id: '$_id' }, '$localizations', '$$ROOT'],
+      $mergeObjects: [{ id: "$_id" }, "$localizations", "$$ROOT"],
     })
     .project(countryExcludedFields)
     .lookup({
@@ -35,16 +35,16 @@ const getOneByLang = async (id, lang) => {
         {
           $match: { countryId: Types.ObjectId(id) },
         },
-        { $unwind: '$localizations' },
+        { $unwind: "$localizations" },
         {
-          $match: { 'localizations.lang': lang },
+          $match: { "localizations.lang": lang },
         },
         {
-          $replaceWith: { $mergeObjects: ['$localizations', '$$ROOT'] },
+          $replaceWith: { $mergeObjects: ["$localizations", "$$ROOT"] },
         },
         { $project: placeExcludedFields },
       ],
-      as: 'places',
+      as: "places",
     });
 
   const country = data[0];
