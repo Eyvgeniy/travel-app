@@ -27,7 +27,7 @@ export function Cards() {
               {country.name}/{country.capital}
             </div>
             <img
-              src={`../..${country.imageUrl}.jpg`}
+              src={`${country.imageUrl}.jpg`}
               className="img-fluid"
               alt={`${country.country}`}
             ></img>
