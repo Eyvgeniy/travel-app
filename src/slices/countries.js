@@ -6,26 +6,29 @@ import routes from "../routes";
 const countriesSlice = createSlice({
   name: "countries",
   initialState: {
-    list: [],
     actualId: null,
+    list: [],
+    currentCountry: {},
   },
   reducers: {
-    getCountries(state, action) {
+    addCountries(state, action) {
       const { data } = action.payload;
-      return [...data];
+      return { ...state, list: data };
+    },
+    selectCountry(state, action) {
+      const { id } = action.payload;
+      return { ...state, actualId: id };
+    },
+    addCurrentCountry(state, action) {
+      const { data } = action.payload;
+      return { ...state, currentCountry: data };
     },
   },
 });
 
-export const { getCountries } = countriesSlice.actions;
+export const {
+  addCountries,
+  selectCountry,
+  addCurrentCountry,
+} = countriesSlice.actions;
 export default countriesSlice.reducer;
-
-export const fetchCountries = async (dispatch) => {
-  const route = routes.getCountries();
-  try {
-    const { data } = await axios.get(route);
-    dispatch(getCountries({ data }));
-  } catch (err) {
-    throw new Error({ error: err.message });
-  }
-};
