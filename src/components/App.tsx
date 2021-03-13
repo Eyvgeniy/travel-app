@@ -1,20 +1,29 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import { Cards } from "./cards/Cards";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { Cards } from "./cards/Cards";
 import { Header } from "./header/Header";
-import { Slider } from "./slider/Slider";
-//import {Slider} from "./slider/Slider"
+// import { Slider } from "./slider/Slider";
+import Countries from "../pages/Сountries";
+import Country from "../pages/Country";
 import "../../public/assets/scss/App.scss";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component<Record<string, unknown>, undefined> {
   public render() {
     return (
       <div className="app">
-        <Header />
-        <Cards />
-        <Slider />
-        <footer></footer>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/country">
+              <Country />
+            </Route>
+            <Route path="/">
+              <Countries />
+            </Route>
+          </Switch>
+          <footer></footer>
+        </Router>
       </div>
     );
   }
