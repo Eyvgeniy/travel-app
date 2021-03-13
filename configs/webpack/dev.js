@@ -1,6 +1,7 @@
 // development config
 const { merge } = require("webpack-merge");
 const webpack = require("webpack");
+const path = require("path");
 const commonConfig = require("./common");
 
 module.exports = merge(commonConfig, {
@@ -13,6 +14,8 @@ module.exports = merge(commonConfig, {
   ],
   devServer: {
     hot: true, // enable HMR on the server
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, "..", ".."),
   },
   devtool: "cheap-module-source-map",
   plugins: [

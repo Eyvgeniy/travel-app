@@ -21,7 +21,7 @@ export function Header() {
       <Container>
         <Navbar.Brand href="/" style={{ padding: "0" }}>
           <img
-            src="../../public/assets/img/logo.png"
+            src="../../public/assets/images/logo.png"
             className="d-inline-block align-top"
             alt="logo"
             style={{ width: "11%" }}

@@ -9,36 +9,34 @@ import rootReducer from "./slices";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const init = async () => {
-  const rootEl = document.getElementById("root");
+  // const f = async () => {
+  //   try {
+  //     const res = await fetch(routes.getCountries());
+  //     const data = await res.json();
 
-  const f = async () => {
-    try {
-      const res = await fetch(routes.getCountries());
-      const data = await res.json();
-
-      return await { countries: data };
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const countries = await f();
-  const preloadedState = countries || {
-    countries: {
-      list: [],
-      actualId: null,
-    },
-  };
+  //     return await { countries: data };
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // const countries = await f();
+  // const preloadedState = countries || {
+  //   countries: {
+  //     list: [],
+  //     actualId: null,
+  //   },
+  // };
 
   const store = configureStore({
     reducer: rootReducer,
-    preloadedState,
+    // preloadedState,
   });
 
   render(
     <Provider store={store}>
       <App />
     </Provider>,
-    rootEl,
+    document.getElementById("root"),
   );
 };
 init();
