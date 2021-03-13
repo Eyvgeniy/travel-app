@@ -49,6 +49,7 @@ const countriesSlice = createSlice({
     list: [],
     currentCountry: {},
     loading: "idle",
+    filter: "",
   },
   reducers: {
     selectCountry(state, action) {
@@ -58,6 +59,9 @@ const countriesSlice = createSlice({
     addCurrentCountry(state, action) {
       const { data } = action.payload;
       return { ...state, currentCountry: data };
+    },
+    changeFilter(state, action) {
+      state.filter = action.payload;
     },
   },
   extraReducers: {
@@ -98,5 +102,5 @@ const countriesSlice = createSlice({
   },
 });
 
-export const { selectCountry } = countriesSlice.actions;
+export const { selectCountry, changeFilter } = countriesSlice.actions;
 export default countriesSlice.reducer;
