@@ -20,7 +20,7 @@ export function Cards() {
             key={country.id}
             onClick={() => {
               dispatch(selectCountry({ id: country.id }));
-              history.push("/country");
+              history.push(`/country`);
             }}
           >
             <div className="card_country">

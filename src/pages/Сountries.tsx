@@ -1,23 +1,18 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { Cards } from "../components/cards/Cards";
-import { addCountries } from "../slices/countries";
-import routes from "../routes";
+import { fetchData } from "../slices/countries";
 
 const Сountries = (): JSX.Element => {
   const dispatch = useDispatch();
+  const { lang } = useSelector((state) => ({
+    lang: state.lang,
+    list: state.countries.list,
+  }));
+
   useEffect(() => {
-    const fetchCountriesData = async () => {
-      try {
-        const { data } = await axios.get(routes.getCountries());
-        await dispatch(addCountries({ data }));
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchCountriesData();
-  }, []);
+    dispatch(fetchData(lang));
+  }, [lang]);
 
   return <Cards />;
 };
