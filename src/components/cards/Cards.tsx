@@ -2,17 +2,22 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { selectCountry } from "../../slices/countries";
-import { cards } from "./cardsinfo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
 export function Cards() {
-  const countries = useSelector((state) => state.countries.list);
+  const countries = useSelector((state) => {
+    const { list, filter } = state.countries;
+    if (filter === "") return list;
+    return list.filter(
+      (el) => el.name.includes(filter) || el.capital.includes(filter),
+    );
+  });
   const dispatch = useDispatch();
   const history = useHistory();
   return (
     <div className="d-flex flex-wrap justify-content-between cards">
-      {countries.map((country, index) => {
+      {countries.map((country) => {
         return (
           <div
             className="card mb-5"
