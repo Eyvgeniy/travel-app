@@ -9,6 +9,7 @@ const countriesSlice = createSlice({
     actualId: null,
     list: [],
     currentCountry: {},
+    loading: "idle",
   },
   reducers: {
     addCountries(state, action) {
@@ -32,3 +33,21 @@ export const {
   addCurrentCountry,
 } = countriesSlice.actions;
 export default countriesSlice.reducer;
+
+export const fetchCountriesData = (dispatch) => async (lang) => {
+  try {
+    const { data } = await axios.get(routes.getCountries(lang));
+    await dispatch(addCountries({ data }));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const fetchPlacesData = (dispatch) => async (lang, id) => {
+  try {
+    const { data } = await axios.get(routes.getCountry(id, lang));
+    dispatch(addCurrentCountry({ data }));
+  } catch (err) {
+    console.error(err);
+  }
+};
