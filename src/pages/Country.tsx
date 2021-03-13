@@ -1,31 +1,21 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import axios from "axios";
 import { Slider } from "../components/slider/Slider";
-import { SelectForm } from "../components/select/SelectForm";
 import VideoPlayer from "../components/player/VideoPlayer";
 import Map from "../components/map/Map";
-import { addCurrentCountry } from "../slices/countries";
-import routes from "../routes";
+import { fetchСountryData } from "../slices/countries";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { id, country } = useSelector((state) => ({
+  const { id, country, lang } = useSelector((state) => ({
     id: state.countries.actualId,
     country: state.countries.currentCountry,
+    lang: state.lang,
   }));
   useEffect(() => {
-    const getPlacesData = async () => {
-      try {
-        const { data } = await axios.get(routes.getCountry(id));
-        dispatch(addCurrentCountry({ data }));
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getPlacesData();
-  }, []);
+    dispatch(fetchСountryData({ id, lang }));
+  }, [lang]);
   return (
     <Container fluid>
       <Row>
