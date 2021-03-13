@@ -1,6 +1,7 @@
 // shared config (dev and prod)
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CheckerPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
   resolve: {
@@ -10,7 +11,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: [/\.jsx?$/, /\.tsx?$/],
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: [/\.jsx?$/],
         use: ["babel-loader"],
         exclude: /node_modules/,
       },
@@ -31,7 +37,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "index.html.ejs" })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: "index.html.ejs" }),
+    new CheckerPlugin(),
+  ],
   externals: {
     react: "React",
     "react-dom": "ReactDOM",

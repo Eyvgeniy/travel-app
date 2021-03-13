@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-const Map = ({ coords }): JSX.Element => {
+interface MapProps{
+  coordinates: Array<number>
+};
+
+const Map = ({ coordinates }: MapProps): JSX.Element => {
   return (
     <div className="text-center">
       <MapContainer

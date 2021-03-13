@@ -7,10 +7,11 @@ import VideoPlayer from "../components/player/VideoPlayer";
 import Map from "../components/map/Map";
 import routes from "../routes";
 import { addCurrentCountry } from "../slices/countries";
+import { RootState } from 'models/RootState';
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { id, country } = useSelector((state) => ({
+  const { id, country } = useSelector((state: RootState) => ({
     id: state.countries.actualId,
     country: state.countries.currentCountry,
   }));
@@ -41,7 +42,7 @@ const Country = (): JSX.Element => {
           </div>
           {country.places && <Slider />}
           <VideoPlayer src={country.videoUrl} />
-          <Map />
+          <Map coordinates={country.capitalLocation.coordinates}/>
         </Col>
         <Col sm={3}>Виджеты</Col>
       </Row>
