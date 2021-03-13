@@ -19,8 +19,9 @@ router.post(
         checkDuplicateUsernameOrEmail
     ],
     wrap(async (req, res) => {
-        await userService.signUp(req.body.username, req.body.password)
-        res.send();
+        await userService.signUp(req.body.username, req.body.password);
+        const data = await userService.signIn(req.body.username, req.body.password);
+        res.status(200).send(data);
     })
 );
 
