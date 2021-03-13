@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import axios from "axios";
 import { Slider } from "../components/slider/Slider";
+import { SelectForm } from "../components/select/SelectForm";
 import VideoPlayer from "../components/player/VideoPlayer";
 import Map from "../components/map/Map";
-import routes from "../routes";
 import { addCurrentCountry } from "../slices/countries";
+import routes from "../routes";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();

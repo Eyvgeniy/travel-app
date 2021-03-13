@@ -8,6 +8,7 @@ import {
   Nav,
   Navbar,
 } from "react-bootstrap";
+import { SelectForm } from "../select/Select";
 
 export function Header() {
   return (
@@ -29,6 +30,7 @@ export function Header() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" style={{ width: "45%" }}>
+          <SelectForm />
           <Form inline>
             <FormControl type="text" placeholder="search" className="mr-sm-3" />
             <Button variant="outline-light">Search</Button>

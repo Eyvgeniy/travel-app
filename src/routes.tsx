@@ -3,6 +3,8 @@ const isProduction = process.env.NODE_ENV === "production";
 const host = isProduction ? "" : "http://localhost:3000";
 
 export default {
-  getCountries: (): string => [host, "countries"].join("/"),
-  getCountry: (id: string): string => [host, "countries", id].join("/"),
+  getCountries: (lang = "en"): string =>
+    [host, `countries?lang=${lang}`].join("/"),
+  getCountry: (id: string, lang = "en" as string): string =>
+    [host, "countries", `${id}?lang=${lang}`].join("/"),
 };
