@@ -10,7 +10,9 @@ export function Cards() {
     const { list, filter } = state.countries;
     if (filter === "") return list;
     return list.filter(
-      (el) => el.name.includes(filter) || el.capital.includes(filter),
+      (el) =>
+        el.name.toLowerCase().includes(filter.toLowerCase()) ||
+        el.capital.toLowerCase().includes(filter.toLowerCase()),
     );
   });
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ export function Cards() {
             key={country.id}
             onClick={() => {
               dispatch(selectCountry({ id: country.id }));
-              history.push(`/country`);
+              history.push(`/country/${country.id}`);
             }}
           >
             <div className="card_country">

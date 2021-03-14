@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
@@ -13,8 +14,14 @@ const Country = (): JSX.Element => {
     country: state.countries.currentCountry,
     lang: state.lang,
   }));
-  useEffect(() => {
+  const memoDispatch = useCallback(() => {
     dispatch(fetchСountryData({ id, lang }));
+  }, [id, lang]);
+  const history = useHistory();
+  console.log(history.location);
+
+  useEffect(() => {
+    memoDispatch();
   }, [lang]);
   return (
     <Container fluid>

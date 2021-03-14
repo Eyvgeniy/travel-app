@@ -15,7 +15,7 @@ class App extends React.Component<Record<string, unknown>, undefined> {
         <Router>
           <Header />
           <Switch>
-            <Route path="/country">
+            <Route path="/country/:id">
               <Country />
             </Route>
             <Route path="/">
