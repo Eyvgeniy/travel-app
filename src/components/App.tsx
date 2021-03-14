@@ -8,7 +8,7 @@ import Countries from "../pages/Сountries";
 import Country from "../pages/Country";
 import "../../public/assets/scss/App.scss";
 
-class App extends React.Component<Record<string, unknown>, undefined> {
+export class App extends React.Component<Record<string, unknown>, undefined> {
   public render() {
     return (
       <div className="app">

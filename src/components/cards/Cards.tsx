@@ -5,9 +5,10 @@ import { selectCountry } from "../../slices/countries";
 import { cards } from "./cardsinfo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
+import { RootState } from "models/RootState";
 
 export function Cards() {
-  const countries = useSelector((state) => state.countries.list);
+  const countries = useSelector((state: RootState) => state.countries.list);
   const dispatch = useDispatch();
   const history = useHistory();
   return (
@@ -29,7 +30,7 @@ export function Cards() {
             <img
               src={`${country.imageUrl}.jpg`}
               className="img-fluid"
-              alt={`${country.country}`}
+              alt={`${country.imageUrl}`}
             ></img>
           </div>
         );

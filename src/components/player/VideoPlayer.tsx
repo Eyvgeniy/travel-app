@@ -1,6 +1,10 @@
 import React from "react";
 
-const VideoPlayer = ({ src }): JSX.Element => {
+interface VideoPlayerProps {
+  src: string;
+}
+
+const VideoPlayer = ({ src }: VideoPlayerProps): JSX.Element => {
   return (
     <div className="video-responsive text-center">
       <iframe
