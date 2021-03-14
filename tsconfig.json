@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "baseUrl": "src",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "outDir": "./public/",
+        "sourceMap": true,
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames":true,      
+        "resolveJsonModule": true,
+        "jsx": "react", 
+        "paths": {
+            "@models": ["models/"]
+        }
+    }
+}
