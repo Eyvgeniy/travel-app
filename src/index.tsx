@@ -6,30 +6,31 @@ import routes from "./routes";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./slices";
+import { changeFilter, selectCountry } from "./slices/countries";
+import { changeLang } from "./slices/lang";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const init = async () => {
-  // const f = async () => {
-  //   try {
-  //     const res = await fetch(routes.getCountries());
-  //     const data = await res.json();
+  const windowData = Object.fromEntries(
+    new URL(window.location).searchParams.entries(),
+  );
 
-  //     return await { countries: data };
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // const countries = await f();
-  // const preloadedState = countries || {
-  //   countries: {
-  //     list: [],
-  //     actualId: null,
-  //   },
-  // };
+  const VALID_KEYS = ["filter", "lang", "id"];
+  const mapKeys = {
+    filter: changeFilter,
+    lang: changeLang,
+    id: selectCountry,
+  };
 
   const store = configureStore({
     reducer: rootReducer,
     // preloadedState,
+  });
+
+  VALID_KEYS.forEach((key) => {
+    if (windowData[key]) {
+      store.dispatch(mapKeys[key](windowData[key]));
+    }
   });
 
   render(

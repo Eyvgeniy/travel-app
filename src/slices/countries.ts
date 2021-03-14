@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import routes from "../routes";
 
 export const fetchData = createAsyncThunk(
@@ -19,6 +20,17 @@ export const fetchData = createAsyncThunk(
       return rejectWithValue(error.response.data);
     }
   },
+  // {
+  //   condition: (lang, { getState }) => {
+  //     const currentLang = getState().lang;
+  //     const { countries } = getState();
+
+  //     if (lang === currentLang && countries.list.length > 0) {
+  //       // Already fetched or in progress, don't need to re-fetch
+  //       return false;
+  //     }
+  //   },
+  // },
 );
 
 export const fetchСountryData = createAsyncThunk(
@@ -55,10 +67,6 @@ const countriesSlice = createSlice({
     selectCountry(state, action) {
       const { id } = action.payload;
       return { ...state, actualId: id };
-    },
-    addCurrentCountry(state, action) {
-      const { data } = action.payload;
-      return { ...state, currentCountry: data };
     },
     changeFilter(state, action) {
       state.filter = action.payload;
