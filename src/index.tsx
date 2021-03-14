@@ -8,7 +8,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./slices";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const init = async () => {
+
   // const f = async () => {
   //   try {
   //     const res = await fetch(routes.getCountries());
@@ -27,16 +27,14 @@ const init = async () => {
   //   },
   // };
 
-  const store = configureStore({
-    reducer: rootReducer,
-    // preloadedState,
-  });
+const store = configureStore({
+  reducer: rootReducer,
+  // preloadedState,
+});
 
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById("root"),
-  );
-};
-init();
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root"),
+);
