@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import routes from "../../routes";
 import { signUp } from "../../slices/user";
+import styles from "./RegisterForm.module.scss"
 
 export const RegisterForm = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -29,7 +30,7 @@ export const RegisterForm = (): JSX.Element => {
         setPassWord(event.target.value);
     }
     return (
-        <>
+        <div className={styles.main}>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formUserName">
                     <Form.Label>User name</Form.Label>
@@ -45,6 +46,6 @@ export const RegisterForm = (): JSX.Element => {
                     Submit
                 </Button>
             </Form>
-        </>
+        </div>
     );
 }
