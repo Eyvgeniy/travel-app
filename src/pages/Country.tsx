@@ -4,7 +4,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import axios from "axios";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
-import Map from "../components/map/Map";
+import MapCountry from "../components/map/MapCountry";
 import routes from "../routes";
 import { addCurrentCountry } from "../slices/countries";
 
@@ -41,7 +41,7 @@ const Country = (): JSX.Element => {
           </div>
           {country.places && <Slider />}
           <VideoPlayer src={country.videoUrl} />
-          <Map />
+          <MapCountry />
         </Col>
         <Col sm={3}>Виджеты</Col>
       </Row>
