@@ -17,13 +17,24 @@ const updateImageByUserName = async (userName, image) => {
 };
 
 const getUserByCodeName = async (userName) => {
-  try{
+  
     var query = {"username": userName};
     const user = await User.findOne(query).exec();
-    return user;
-  }catch (error){
-    throw new BadRequestError(error)
-  }
+    if(user){
+      return user;
+    }
+    
+    throw new NotFoundError(ENTITY_NAME);
+};
+
+const getUserById = async (id) => {
+    var query = { _id: Types.ObjectId(id)};
+    const user = await User.findOne(query).exec();
+    if(user){
+      return user;
+    }
+    
+    throw new NotFoundError(ENTITY_NAME);
 };
 
 const saveUser = async (userName, passwordHash) => {
@@ -37,6 +48,7 @@ const saveUser = async (userName, passwordHash) => {
 
 module.exports = {
   updateImageByUserName,
+  getUserById,
   getUserByCodeName,
   saveUser
 };

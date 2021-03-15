@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
-import routes from "./routes";
+import { CookiesProvider } from 'react-cookie';
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./slices";
@@ -33,8 +33,11 @@ const store = configureStore({
 });
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <CookiesProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </CookiesProvider>
+,
   document.getElementById("root"),
 );
