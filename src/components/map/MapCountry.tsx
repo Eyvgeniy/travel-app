@@ -69,12 +69,12 @@ L.Icon.Default.mergeOptions({
   }
   
   return (
-    <div className="App">
+    <div className="map-container">
       {(countryCoordinates) ? (
-      <LeafletMap whenCreated={ (mapInstance: L.Map) => { this.mapRef.current = mapInstance } } fullscreenControl={true} center={locationCenter} zoom={2}>
+      <LeafletMap ref={mapRef} fullscreenControl={true} center={locationCenter} zoom={2}>
         <TileLayer url="https://api.mapbox.com/styles/v1/maxonvtec/ckm6qkb9e0yv017p8t540d525/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWF4b252dGVjIiwiYSI6ImNrbTZxd3VpeDBicDgycGxhbWdxZTJ5cjQifQ.53LRYE3q1yORonbytdpiiA"
     attribution="Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors, <a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;>CC-BY-SA</a>, Imagery &copy; <a href=&quot;https://www.mapbox.com/&quot;>Mapbox</a>"/>
-       <GeoJSON /*className="capital-style" color='red'*/ data={countryCoordinates} />
+       <GeoJSON className="capital-style" color='red' data={countryCoordinates} />
         <Marker position={capitalLocation}>
           <Popup>Hello, it's Travell App</Popup>
         </Marker>
