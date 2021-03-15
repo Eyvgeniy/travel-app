@@ -12,7 +12,7 @@ import "../../public/assets/scss/App.scss";
 class App extends React.Component<Record<string, unknown>, undefined> {
   public render() {
     return (
-      <div className="app">
+      <div className="app mx-auto">
         <Router>
           <Header />
           <Switch>
