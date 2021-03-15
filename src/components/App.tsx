@@ -7,9 +7,9 @@ import { Header } from "./header/Header";
 import Countries from "../pages/Сountries";
 import Country from "../pages/Country";
 import "../../public/assets/scss/App.scss";
-import { RegisterForm } from './RegisterForm/RegisterForm';
+import RegisterForm from "./RegisterForm/RegisterForm";
 
-export class App extends React.Component<Record<string, unknown>, undefined> {
+export class App extends React.Component<Record<string, unknown>, {}> {
   public render() {
     return (
       <div className="app">
@@ -20,7 +20,7 @@ export class App extends React.Component<Record<string, unknown>, undefined> {
               <Country />
             </Route>
             <Route path="/register">
-              <RegisterForm />
+              <RegisterForm/>
             </Route>
 
             <Route exact path="/">

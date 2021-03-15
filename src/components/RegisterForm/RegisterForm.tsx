@@ -1,21 +1,32 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import routes from "../../routes";
 import { signUp } from "../../slices/user";
 import styles from "./RegisterForm.module.scss"
+import { Cookies, withCookies } from "react-cookie";
+import { RootState } from "models/RootState";
+import { Auth } from "../../AppConstants";
+import { UserModel } from "models/User/User";
 
-export const RegisterForm = (): JSX.Element => {
+interface RegisterFormProps {
+    cookies: Cookies
+}
+
+const RegisterForm = (props: RegisterFormProps): JSX.Element => {
     const dispatch = useDispatch();
     const [userName, setUserName] = useState("");
     const [passWord, setPassWord] = useState("");
+
+    const { cookies } = props;
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             const data = await axios.post(routes.signUp(userName, passWord), {username: userName, password: passWord});
-            console.log(data);
+            const user = data.data as UserModel;
+            cookies.set(Auth.COOKIE_TOKEN, user.accessToken);
             await dispatch(signUp(data));
         } catch (err) {
             console.error(err);
@@ -49,3 +60,13 @@ export const RegisterForm = (): JSX.Element => {
         </div>
     );
 }
+
+const mapStateToProps = (state: RootState , ownProps: {cookies: Cookies}) => {
+    return ({
+      state: state,
+      cookies: ownProps.cookies
+    });
+}
+
+  
+export default withCookies(connect(mapStateToProps, null)(RegisterForm));
