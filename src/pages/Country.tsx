@@ -4,10 +4,10 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import axios from "axios";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
-import Map from "../components/map/Map";
+import MapCountry from "../components/map/MapCountry";
 import routes from "../routes";
 import { addCurrentCountry } from "../slices/countries";
-import { RootState } from 'models/RootState';
+import { RootState } from '../models/RootState';
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Country = (): JSX.Element => {
           </div>
           {country.places && <Slider />}
           <VideoPlayer src={country.videoUrl} />
-          <Map coordinates={country.capitalLocation.coordinates}/>
+          <MapCountry/>
         </Col>
         <Col sm={3}>Виджеты</Col>
       </Row>
