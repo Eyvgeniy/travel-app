@@ -2,13 +2,13 @@ import "regenerator-runtime/runtime";
 import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
-import routes from "./routes";
+import { CookiesProvider } from 'react-cookie';
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./slices";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const init = async () => {
+
   // const f = async () => {
   //   try {
   //     const res = await fetch(routes.getCountries());
@@ -27,16 +27,17 @@ const init = async () => {
   //   },
   // };
 
-  const store = configureStore({
-    reducer: rootReducer,
-    // preloadedState,
-  });
+const store = configureStore({
+  reducer: rootReducer,
+  // preloadedState,
+});
 
-  render(
+render(
+  <CookiesProvider>
     <Provider store={store}>
       <App />
-    </Provider>,
-    document.getElementById("root"),
-  );
-};
-init();
+    </Provider>
+  </CookiesProvider>
+,
+  document.getElementById("root"),
+);

@@ -34,6 +34,22 @@ router.post(
 );
 
 router.post(
+    "/auth/signin",
+    wrap(async (req, res) => {
+        const data = await userService.signIn(req.body.username, req.body.password)
+        res.send(data);
+    })
+);
+
+router.post(
+    "/auth/check-token-validity",
+    wrap(async (req, res) => {
+        const data = await userService.checkValidity(req.body.token)
+        res.send(data);
+    })
+);
+
+router.post(
     "/user-photo",
     wrap(async (req, res) => {
         try{

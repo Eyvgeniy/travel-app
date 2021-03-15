@@ -5,11 +5,10 @@ const checkDuplicateUsernameOrEmail = async (req, res, next) => {
   try{
     const user = await userService.getUserByCodeName(req.body.username);
     if (user) {
-      throw res.status(400).send({message: "Failed! Username is already in use!"});
+       res.status(400).send({message: "Failed! Username is already in use!"});
+    }else{
+      next();
     }
-
-    next();
-
   }catch(error){
     throw new BadRequestError(error)
   }
