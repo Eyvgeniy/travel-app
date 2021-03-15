@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./slices";
 import { changeLang } from "./slices/lang";
+import "./components/i18n";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const init = async () => {

@@ -6,6 +6,7 @@ import { Header } from "./header/Header";
 // import { Slider } from "./slider/Slider";
 import Countries from "../pages/Сountries";
 import Country from "../pages/Country";
+import Footer from "./footer/Footer";
 import "../../public/assets/scss/App.scss";
 
 class App extends React.Component<Record<string, unknown>, undefined> {
@@ -22,7 +23,7 @@ class App extends React.Component<Record<string, unknown>, undefined> {
               <Countries />
             </Route>
           </Switch>
-          <footer></footer>
+          <Footer />
         </Router>
       </div>
     );

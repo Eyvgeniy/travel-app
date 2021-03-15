@@ -7,29 +7,24 @@ import { Search } from "./Search";
 
 export function Header() {
   const { pathname } = useLocation();
+  console.log(location);
   return (
-    <Navbar
-      collapseOnSelect
-      expand="md"
-      className="navbar-light"
-      style={{ backgroundColor: "rgb(134, 146, 155)" }}
-      variant="light"
-    >
-      <Container>
-        <Navbar.Brand href="/" style={{ padding: "0" }}>
-          <img
-            src="../../public/assets/images/logo.png"
-            className="d-inline-block align-top"
-            alt="logo"
-            style={{ width: "11%" }}
-          />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" style={{ width: "45%" }}>
-          <SelectForm />
-          {pathname === "/" ? <Search /> : null}
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-expand-lg navbar-light">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="#">
+          <strong>TRAVEL APP</strong>
+        </a>
+        <div className="d-flex">
+          <div className="d-flex">
+            <SelectForm />
+            {pathname.includes("country") ? null : <Search />}
+          </div>
+          <div className="d-flex">
+            <button className="btn btn-outline-secondary">Sign In </button>
+            <button className="btn btn-outline-secondary">Sign Un </button>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }
