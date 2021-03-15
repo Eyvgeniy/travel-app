@@ -6,17 +6,18 @@ import { Header } from "./header/Header";
 // import { Slider } from "./slider/Slider";
 import Countries from "../pages/Сountries";
 import Country from "../pages/Country";
+import Footer from "./footer/Footer";
 import "../../public/assets/scss/App.scss";
 import RegisterForm from "./RegisterForm/RegisterForm";
 
 export class App extends React.Component<Record<string, unknown>, {}> {
   public render() {
     return (
-      <div className="app">
+      <div className="app mx-auto">
         <Router>
           <Header />
           <Switch>
-            <Route path="/country">
+            <Route path="/country/:id">
               <Country />
             </Route>
             <Route path="/register">
@@ -27,7 +28,7 @@ export class App extends React.Component<Record<string, unknown>, {}> {
               <Countries />
             </Route>
           </Switch>
-          <footer></footer>
+          <Footer />
         </Router>
       </div>
     );

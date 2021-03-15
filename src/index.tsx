@@ -2,42 +2,42 @@ import "regenerator-runtime/runtime";
 import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
-import { CookiesProvider } from 'react-cookie';
+import { CookiesProvider } from "react-cookie";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./slices";
+import { changeLang } from "./slices/lang";
+import "./components/i18n";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const init = async () => {
+  const windowData = Object.fromEntries(
+    new URL(window.location).searchParams.entries(),
+  );
 
-  // const f = async () => {
-  //   try {
-  //     const res = await fetch(routes.getCountries());
-  //     const data = await res.json();
+  const VALID_KEYS = ["lang"];
+  const mapKeys = {
+    lang: changeLang,
+  };
 
-  //     return await { countries: data };
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // const countries = await f();
-  // const preloadedState = countries || {
-  //   countries: {
-  //     list: [],
-  //     actualId: null,
-  //   },
-  // };
+  const store = configureStore({
+    reducer: rootReducer,
+    // preloadedState,
+  });
 
-const store = configureStore({
-  reducer: rootReducer,
-  // preloadedState,
-});
+  VALID_KEYS.forEach((key) => {
+    if (windowData[key]) {
+      store.dispatch(mapKeys[key](windowData[key]));
+    }
+  });
 
-render(
-  <CookiesProvider>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </CookiesProvider>
-,
-  document.getElementById("root"),
-);
+  render(
+    <CookiesProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </CookiesProvider>,
+    document.getElementById("root"),
+  );
+};
+init();
