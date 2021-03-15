@@ -14,7 +14,8 @@
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames":true,
+        "forceConsistentCasingInFileNames":true,      
+        "resolveJsonModule": true,
         "jsx": "react", 
         "paths": {
             "@models": ["models/"]

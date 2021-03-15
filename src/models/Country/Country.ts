@@ -10,7 +10,7 @@ export interface CountryShortModel {
 }
 
 export interface CapitalLocation {
-    coordinates: Array<number>,
+    coordinates: [number, number],
     type: "Point",
 }
 
