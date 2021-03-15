@@ -24,7 +24,7 @@ export const Search = (): JSX.Element => {
   return (
     <form className="d-flex">
       <input
-        className="form-control me-2"
+        className="form-control"
         type="search"
         placeholder="Search"
         value={filter}

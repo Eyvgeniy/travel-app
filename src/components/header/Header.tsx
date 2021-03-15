@@ -12,16 +12,16 @@ export function Header() {
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          <strong>TRAVEL APP</strong>
+          <h1>TRAVEL APP</h1>
         </a>
         <div className="d-flex">
-          <div className="d-flex">
+          <div className="d-flex mr-1">
             <SelectForm />
             {pathname.includes("country") ? null : <Search />}
           </div>
           <div className="d-flex">
-            <button className="btn btn-outline-secondary">Sign In </button>
-            <button className="btn btn-outline-secondary">Sign Un </button>
+            <button className="btn btn-outline-secondary mr-1">Sign In </button>
+            <button className="btn btn-outline-secondary mr-1">Sign Un </button>
           </div>
         </div>
       </div>
