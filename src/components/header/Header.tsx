@@ -1,43 +1,28 @@
 import * as React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Button,
-  Container,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-} from "react-bootstrap";
 import UserInfo from "../UserInfo/UserInfo";
+import { useLocation } from "react-router-dom";
+import { SelectForm } from "../select/Select";
+import { Search } from "./Search";
 
 export function Header() {
+  const { pathname } = useLocation();
   return (
-    <Navbar
-      collapseOnSelect
-      expand="md"
-      className="navbar-light"
-      style={{ backgroundColor: "rgb(134, 146, 155)" }}
-      variant="light"
-    >
-      <Container>
-        <Navbar.Brand href="/" style={{ padding: "0" }}>
-          <img
-            src="../../public/assets/images/logo.png"
-            className="d-inline-block align-top"
-            alt="logo"
-            style={{ width: "11%" }}
-          />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" style={{ width: "45%" }}>
-          <Form inline>
-            <FormControl type="text" placeholder="search" className="mr-sm-3" />
-            <Button variant="outline-light">Search</Button>
-          </Form>
-          <UserInfo/>
-        </Navbar.Collapse>
-
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-expand-lg navbar-light">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="#">
+          <h1>TRAVEL APP</h1>
+        </a>
+        <div className="d-flex">
+          <div className="d-flex mr-1">
+            <SelectForm />
+            {pathname.includes("country") ? null : <Search />}
+          </div>
+          <div className="d-flex">
+            <UserInfo/>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }

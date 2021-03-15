@@ -1,11 +1,11 @@
 import { Auth } from "../../AppConstants";
 import { RootState } from "models/RootState";
 import * as React from "react";
-import { Button } from "react-bootstrap";
 import { Cookies, withCookies } from "react-cookie";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../slices/user";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 interface UserInfoProps {
     cookies: Cookies
@@ -41,13 +41,13 @@ const UserInfo = ({cookies}: UserInfoProps): JSX.Element => {
                         style={{ width: "11%" }}
                     />
                     <span>{user.username}</span>
-                    <Button onClick={handleOnLogOut}>LogOut</Button>
+                    <button className="btn btn-outline-secondary mr-1" onClick={handleOnLogOut}>Log Out</button>
                 </div>
             }
             {!user &&
                 <>
-                    <Button onClick={handleOnLogIn}>LogIn</Button>
-                    <Button onClick={handleOnRegister}>Register</Button>
+                    <button className="btn btn-outline-secondary mr-1" onClick={handleOnLogIn}>Sign In </button>
+                    <button className="btn btn-outline-secondary mr-1" onClick={handleOnRegister}>Sign Up</button>
                 </>
             }
         </>

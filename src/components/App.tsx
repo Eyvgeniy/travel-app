@@ -6,6 +6,7 @@ import { Header } from "./header/Header";
 // import { Slider } from "./slider/Slider";
 import Countries from "../pages/Сountries";
 import Country from "../pages/Country";
+import Footer from "./footer/Footer";
 import "../../public/assets/scss/App.scss";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import { withCookies, Cookies } from 'react-cookie';
@@ -40,11 +41,11 @@ class App extends React.Component<AppProps, {}> {
 
   public render() {
     return (
-      <div className="app">
+      <div className="app mx-auto">
         <Router>
           <Header />
           <Switch>
-            <Route path="/country">
+            <Route path="/country/:id">
               <Country />
             </Route>
             <Route path="/register">
@@ -55,7 +56,7 @@ class App extends React.Component<AppProps, {}> {
               <Countries />
             </Route>
           </Switch>
-          <footer></footer>
+          <Footer />
         </Router>
       </div>
     );
