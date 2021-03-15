@@ -5,7 +5,6 @@ import axios from "axios";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
 import MapCountry from "../components/map/MapCountry";
-import Map from "../components/map/Map";
 import routes from "../routes";
 import { addCurrentCountry } from "../slices/countries";
 import { RootState } from '../models/RootState';
@@ -44,7 +43,6 @@ const Country = (): JSX.Element => {
           {country.places && <Slider />}
           <VideoPlayer src={country.videoUrl} />
           <MapCountry/>
-          {/*<Map coordinates={country.capitalLocation.coordinates}/>*/}
         </Col>
         <Col sm={3}>Виджеты</Col>
       </Row>
