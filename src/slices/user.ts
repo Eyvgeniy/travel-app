@@ -1,35 +1,33 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { UserState } from "models/RootState";
 import routes from "../routes";
+import axios from "axios";
 
-/*const countriesSlice = createSlice({
-  name: "countries",
+const userSlice = createSlice({
+  name: "user",
   initialState: {
-    actualId: null,
-    list: [],
-    currentCountry: {},
-  },
+    currentUser: null
+  } as UserState,
   reducers: {
-    addCountries(state, action) {
+    signIn(state, action) {
       const { data } = action.payload;
-      return { ...state, list: data };
+      return { ...state, currentUser: data };
     },
-    selectCountry(state, action) {
-      const { id } = action.payload;
-      return { ...state, actualId: id };
-    },
-    addCurrentCountry(state, action) {
+    signUp(state, action) {
       const { data } = action.payload;
-      return { ...state, currentCountry: data };
+      return { ...state, currentUser: data };
+    },
+    logOut(state, action) {
+      const { data } = action.payload;
+      return { ...state, currentUser: null };
     },
   },
 });
 
 export const {
-  addCountries,
-  selectCountry,
-  addCurrentCountry,
-} = countriesSlice.actions;
-export default countriesSlice.reducer;
-*/
+  signIn,
+  signUp,
+  logOut,
+} = userSlice.actions;
+export default userSlice.reducer;

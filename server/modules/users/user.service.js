@@ -13,6 +13,10 @@ const getUserByCodeName = (userName) => {
   return userRepo.getUserByCodeName(userName);
 };
 
+const getUserById = (id) => {
+  return userRepo.getUserById(id);
+};
+
 const signUp = async (userName, password) => {
   try{
     await userRepo.saveUser(userName, bcrypt.hashSync(password, 8));
@@ -40,7 +44,7 @@ const signIn = async (userName, password) => {
       };
     }
 
-    var token = jwt.sign({ id: user.id }, config.secret, {
+    var token = jwt.sign({ id: user.id, userName: user.username }, config.secret, {
       expiresIn: 86400 // 24 hours
     });
     return {
@@ -51,9 +55,21 @@ const signIn = async (userName, password) => {
     };
 };
 
+const checkValidity = async (token) => {
+  try {
+    var decoded = jwt.verify(token, config.secret);
+    const user = await userRepo.getUserById(decoded.id);
+    return user;
+  } catch(err) {
+    return null;
+  }
+};
+
 module.exports = {
     uploadImage,
     getUserByCodeName,
+    getUserById,
     signUp,
-    signIn
+    signIn,
+    checkValidity
 };
