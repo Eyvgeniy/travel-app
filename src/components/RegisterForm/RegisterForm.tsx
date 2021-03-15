@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import routes from "../../routes";
-import { signUp } from "../../slices/user";
+import { updateCurrentUser } from "../../slices/user";
 import styles from "./RegisterForm.module.scss"
 import { Cookies, withCookies } from "react-cookie";
 import { RootState } from "models/RootState";
 import { Auth } from "../../AppConstants";
 import { UserModel } from "models/User/User";
+import { useHistory } from "react-router-dom";
 
 interface RegisterFormProps {
     cookies: Cookies
@@ -18,7 +19,7 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
     const dispatch = useDispatch();
     const [userName, setUserName] = useState("");
     const [passWord, setPassWord] = useState("");
-
+    const history = useHistory();
     const { cookies } = props;
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -27,7 +28,9 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
             const data = await axios.post(routes.signUp(userName, passWord), {username: userName, password: passWord});
             const user = data.data as UserModel;
             cookies.set(Auth.COOKIE_TOKEN, user.accessToken);
-            await dispatch(signUp(data));
+            await dispatch(updateCurrentUser(user));
+            
+            history.push(`/`);
         } catch (err) {
             console.error(err);
         }

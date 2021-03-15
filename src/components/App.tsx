@@ -8,8 +8,36 @@ import Countries from "../pages/Сountries";
 import Country from "../pages/Country";
 import "../../public/assets/scss/App.scss";
 import RegisterForm from "./RegisterForm/RegisterForm";
+import { withCookies, Cookies } from 'react-cookie';
+import { Auth } from "../AppConstants";
+import axios from "axios";
+import routes from "../routes";
+import { UserModel } from "models/User/User";
+import { connect, useDispatch } from "react-redux";
+import { updateCurrentUser } from "../slices/user";
+import { RootState } from "models/RootState";
 
-export class App extends React.Component<Record<string, unknown>, {}> {
+interface AppProps {
+  cookies: Cookies,
+  updateUser: (user: UserModel) => Promise<void>
+};
+
+class App extends React.Component<AppProps, {}> {
+
+  async componentDidMount(){
+    const { cookies } = this.props;
+    const token = cookies.get(Auth.COOKIE_TOKEN);
+    if(token){
+      const data = await axios.get(routes.checkValidity(token),{params:{token}});
+      const user = data.data as UserModel;
+      if(user){
+        cookies.set(Auth.COOKIE_TOKEN, user.accessToken);
+      
+        this.props.updateUser(user);
+      }
+    }
+  }
+
   public render() {
     return (
       <div className="app">
@@ -34,6 +62,11 @@ export class App extends React.Component<Record<string, unknown>, {}> {
   }
 }
 
-declare let module: Record<string, unknown>;
-
-export default hot(module)(App);
+const mapDispatchToProps = (dispatch: Function, ownProps: {cookies: Cookies}) => {
+  return ({
+      updateUser: (user: UserModel) => dispatch(updateCurrentUser(user)),
+      cookies: ownProps.cookies
+  });
+};
+//@ts-ignore
+export default hot(module)(withCookies(connect(null, mapDispatchToProps)(App)));
