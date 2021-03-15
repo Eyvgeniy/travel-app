@@ -6,7 +6,6 @@ import routes from "./routes";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./slices";
-import { changeFilter, selectCountry } from "./slices/countries";
 import { changeLang } from "./slices/lang";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,11 +14,9 @@ const init = async () => {
     new URL(window.location).searchParams.entries(),
   );
 
-  const VALID_KEYS = ["filter", "lang", "id"];
+  const VALID_KEYS = ["lang"];
   const mapKeys = {
-    filter: changeFilter,
     lang: changeLang,
-    id: selectCountry,
   };
 
   const store = configureStore({

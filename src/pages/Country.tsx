@@ -17,8 +17,6 @@ const Country = (): JSX.Element => {
   const memoDispatch = useCallback(() => {
     dispatch(fetchСountryData({ id, lang }));
   }, [id, lang]);
-  const history = useHistory();
-  console.log(history.location);
 
   useEffect(() => {
     memoDispatch();
