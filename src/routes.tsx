@@ -9,5 +9,5 @@ export default {
   getCountry: (id: string): string => [host, "countries", id].join("/"),
   signIn: (username: string, password: string): string => [host, "api/user/auth/signin"].join("/"),
   signUp: (username: string, password: string): string => [host, "api/user/auth/signup"].join("/"),
-  checkValidity: (token: string): string => [host, "api/user/auth/check-token-validity"].join("/"),
+  checkValidity: (token: string): string => [host, "api/user/auth/check"].join("/"),
 };

@@ -8,6 +8,7 @@ import {
   Nav,
   Navbar,
 } from "react-bootstrap";
+import UserInfo from "../UserInfo/UserInfo";
 
 export function Header() {
   return (
@@ -33,7 +34,9 @@ export function Header() {
             <FormControl type="text" placeholder="search" className="mr-sm-3" />
             <Button variant="outline-light">Search</Button>
           </Form>
+          <UserInfo/>
         </Navbar.Collapse>
+
       </Container>
     </Navbar>
   );

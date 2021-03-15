@@ -57,10 +57,22 @@ const signIn = async (userName, password) => {
 
 const checkValidity = async (token) => {
   try {
-    var decoded = jwt.verify(token, config.secret);
-    const user = await userRepo.getUserById(decoded.id);
-    return user;
+    let decoded = jwt.verify(token, config.secret);
+    console.log(decoded);
+    let user = await userRepo.getUserById(decoded.id);
+    console.log(user);
+    let newToken = jwt.sign({ id: user.id, userName: user.username }, config.secret, {
+      expiresIn: 86400 // 24 hours
+    });
+    return {
+      id: user._id,
+      username: user.username,
+      accessToken: newToken,
+      message: null
+    };
   } catch(err) {
+    
+    console.log(err);
     return null;
   }
 };

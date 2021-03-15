@@ -10,8 +10,8 @@ const userSlice = createSlice({
     currentUser: null
   } as UserState,
   reducers: {
-    signIn(state, action) {
-      const { data } = action.payload;
+    updateCurrentUser(state, action) {
+      const data = action.payload;
       return { ...state, currentUser: data };
     },
     signUp(state, action) {
@@ -19,14 +19,13 @@ const userSlice = createSlice({
       return { ...state, currentUser: data };
     },
     logOut(state, action) {
-      const { data } = action.payload;
       return { ...state, currentUser: null };
     },
   },
 });
 
 export const {
-  signIn,
+  updateCurrentUser,
   signUp,
   logOut,
 } = userSlice.actions;
