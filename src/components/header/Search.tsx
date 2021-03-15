@@ -1,36 +1,21 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, FormControl } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 import { changeFilter } from "../../slices/countries";
 import "./search.css";
 
 export const Search = (): JSX.Element => {
-  const { filter, lang } = useSelector((state) => ({
-    filter: state.countries.filter,
-    lang: state.lang,
-  }));
-  console.log(filter);
-  // const [value, setValue] = React.useState("");
+  const filter = useSelector((state) => state.countries.filter);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleChange = ({ target }) => {
-    // setValue(target.value);
     dispatch(changeFilter(target.value));
-    if (target.value === "") {
-      history.push(`${history.location.pathname}?lang=${lang}`);
-    } else {
-      history.push(
-        `${history.location.pathname}?lang=${lang}&filter=${target.value}`,
-      );
-    }
   };
 
   const clearFilter = () => {
     dispatch(changeFilter(""));
-    history.push(`${history.location.pathname}?lang=${lang}`);
   };
+
   const inputRef = React.useRef(null);
   React.useEffect(() => {
     inputRef.current.focus();
