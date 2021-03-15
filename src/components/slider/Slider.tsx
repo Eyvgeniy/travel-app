@@ -32,7 +32,7 @@ export function Slider() {
   // }
   const slides = country.places.map((place, index) => {
     return (
-      <SwiperSlide key={`slide-${index}`}>
+      <SwiperSlide key={`slide-${index}`} className="relative">
         <img src={`${place.imageUrl}.jpg`} alt={`Slide ${index}`} />
       </SwiperSlide>
     );

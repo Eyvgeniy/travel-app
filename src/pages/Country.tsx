@@ -1,31 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import axios from "axios";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
 import MapCountry from "../components/map/MapCountry";
-import routes from "../routes";
-import { addCurrentCountry } from "../slices/countries";
-import { RootState } from '../models/RootState';
+import { fetchСountryData } from "../slices/countries";
+import { useTranslation } from "react-i18next";
+import { RootState } from "../models/RootState";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { id, country } = useSelector((state: RootState) => ({
+  const { id, country, lang } = useSelector((state: RootState) => ({
     id: state.countries.actualId,
     country: state.countries.currentCountry,
+    lang: state.lang,
   }));
+  const { t } = useTranslation();
+  const memoDispatch = useCallback(() => {
+    dispatch(fetchСountryData({ id, lang }));
+  }, [id, lang]);
+
   useEffect(() => {
-    const getPlacesData = async () => {
-      try {
-        const { data } = await axios.get(routes.getCountry(id));
-        dispatch(addCurrentCountry({ data }));
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getPlacesData();
-  }, []);
+    memoDispatch();
+  }, [lang]);
   return (
     <Container fluid>
       <Row>
@@ -40,11 +38,41 @@ const Country = (): JSX.Element => {
             <h3>Capital {country.capital}</h3>
             <p>{country.description}</p>
           </div>
-          {country.places && <Slider />}
-          <VideoPlayer src={country.videoUrl} />
-          <MapCountry/>
+          <div className="">
+            <div>
+              <h4 className="text-center">{t("sights")}</h4>
+              {country.places && <Slider />}
+            </div>
+            <VideoPlayer src={country.videoUrl} />
+          </div>
+          <MapCountry />
         </Col>
-        <Col sm={3}>Виджеты</Col>
+        <Col sm={3}>
+          <div className="bg-info mb-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            debitis et molestiae, quisquam incidunt dignissimos consequatur
+            labore, sequi fuga dolore tenetur exercitationem odit asperiores
+            porro deserunt! Error ratione assumenda voluptatibus, vero aut
+            deleniti nulla voluptate debitis blanditiis quae magni voluptatum
+            beatae illum optio ea, eius in, fuga quis perspiciatis! Veritatis.
+          </div>
+          <div className="bg-info mb-2 ">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            debitis et molestiae, quisquam incidunt dignissimos consequatur
+            labore, sequi fuga dolore tenetur exercitationem odit asperiores
+            porro deserunt! Error ratione assumenda voluptatibus, vero aut
+            deleniti nulla voluptate debitis blanditiis quae magni voluptatum
+            beatae illum optio ea, eius in, fuga quis perspiciatis! Veritatis.
+          </div>
+          <div className="bg-info mb-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            debitis et molestiae, quisquam incidunt dignissimos consequatur
+            labore, sequi fuga dolore tenetur exercitationem odit asperiores
+            porro deserunt! Error ratione assumenda voluptatibus, vero aut
+            deleniti nulla voluptate debitis blanditiis quae magni voluptatum
+            beatae illum optio ea, eius in, fuga quis perspiciatis! Veritatis.
+          </div>
+        </Col>
       </Row>
     </Container>
   );
