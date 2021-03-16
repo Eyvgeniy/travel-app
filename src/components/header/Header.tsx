@@ -7,7 +7,6 @@ import { Search } from "./Search";
 
 export function Header() {
   const { pathname } = useLocation();
-  console.log(location);
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">

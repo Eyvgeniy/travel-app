@@ -4,6 +4,10 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import routes from "../routes";
 
+interface MyKnownError {
+  errorMessage: string;
+}
+
 export const fetchData = createAsyncThunk(
   "countries/fetchDataStatus",
   async (lang: string, { rejectWithValue }): Promise<unknown> => {
@@ -74,42 +78,75 @@ const countriesSlice = createSlice({
       state.filter = action.payload;
     },
   },
-  extraReducers: {
-    [fetchData.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchData.pending, (state) => {
+      state.loading = "pending";
+    });
+    builder.addCase(fetchData.fulfilled, (state, action) => {
       state.list = action.payload;
       state.loading = "idle";
-    },
-    [fetchData.pending]: (state) => {
-      state.loading = "pending";
-    },
-    [fetchData.rejected]: (state, action) => {
+    });
+    builder.addCase(fetchData.rejected, (state, action) => {
       if (action.payload) {
-        // Being that we passed in ValidationErrors to rejectType in `createAsyncThunk`, the payload will be available here.
         state.error = action.payload.errorMessage;
       } else {
         state.error = action.error.message;
       }
-      console.log(action);
       state.loading = "idle";
-    },
-    [fetchСountryData.fulfilled]: (state, action) => {
+    });
+    builder.addCase(fetchСountryData.pending, (state) => {
+      state.loadingCountry = "pending";
+    });
+    builder.addCase(fetchСountryData.fulfilled, (state, action) => {
       state.currentCountry = action.payload;
       state.loadingCountry = "idle";
-    },
-    [fetchСountryData.pending]: (state) => {
-      state.loadingCountry = "pending";
-    },
-    [fetchСountryData.rejected]: (state, action) => {
+    });
+    builder.addCase(fetchСountryData.rejected, (state, action) => {
       if (action.payload) {
-        // Being that we passed in ValidationErrors to rejectType in `createAsyncThunk`, the payload will be available here.
         state.error = action.payload.errorMessage;
       } else {
         state.error = action.error.message;
       }
       console.log(action);
       state.loadingCountry = "idle";
-    },
+    });
   },
+  // {
+  //   [fetchData.fulfilled]: (state, action) => {
+  //     state.list = action.payload;
+  //     state.loading = "idle";
+  //   },
+  //   [fetchData.pending]: (state) => {
+  //     state.loading = "pending";
+  //   },
+  //   [fetchData.rejected]: (state, action) => {
+  //     if (action.payload) {
+  //       // Being that we passed in ValidationErrors to rejectType in `createAsyncThunk`, the payload will be available here.
+  //       state.error = action.payload.errorMessage;
+  //     } else {
+  //       state.error = action.error.message;
+  //     }
+  //     console.log(action);
+  //     state.loading = "idle";
+  //   },
+  //   [fetchСountryData.fulfilled]: (state, action) => {
+  //     state.currentCountry = action.payload;
+  //     state.loadingCountry = "idle";
+  //   },
+  //   [fetchСountryData.pending]: (state) => {
+  //     state.loadingCountry = "pending";
+  //   },
+  //   [fetchСountryData.rejected]: (state, action) => {
+  //     if (action.payload) {
+  //       // Being that we passed in ValidationErrors to rejectType in `createAsyncThunk`, the payload will be available here.
+  //       state.error = action.payload.errorMessage;
+  //     } else {
+  //       state.error = action.error.message;
+  //     }
+  //     console.log(action);
+  //     state.loadingCountry = "idle";
+  //   },
+  // },
 });
 
 export const { selectCountry, changeFilter } = countriesSlice.actions;
