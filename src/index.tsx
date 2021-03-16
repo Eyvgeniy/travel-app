@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const init = async () => {
   const windowData = Object.fromEntries(
-    new URL(window.location).searchParams.entries(),
+    new URL(window.location.href).searchParams.entries(),
   );
 
   const VALID_KEYS = ["lang"];
