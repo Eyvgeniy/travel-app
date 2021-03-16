@@ -37,8 +37,8 @@ const Country = (): JSX.Element => {
             rounded
           />
           <div className="text-center">
-            <h2>Country {country.name}</h2>
-            <h3>Capital {country.capital}</h3>
+            <h2>{country.name}</h2>
+            <h3>{country.capital}</h3>
             <p>{country.description}</p>
           </div>
           <div className="">

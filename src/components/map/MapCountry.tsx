@@ -32,8 +32,8 @@ const locationCenter: [number, number] = [30, 20];
 //@ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: './public/assets/images/icons-map/marker-icon-2x-grey.png',
-  iconUrl: './public/assets/images/icons-map/marker-icon-grey.png',
+  iconRetinaUrl: '/public/assets/images/icons-map/marker-icon-2x-grey.png',
+  iconUrl: '/public/assets/images/icons-map/marker-icon-grey.png',
   shadowUrl: '/public/assets/images/icons-map/marker-shadow.png'
 });
 

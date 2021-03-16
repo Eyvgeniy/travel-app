@@ -11,7 +11,7 @@ export function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <h1>TRAVEL APP</h1>
         </a>
         <div className="d-flex">
