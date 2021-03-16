@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
@@ -23,6 +23,7 @@ const Country = (): JSX.Element => {
 
   useEffect(() => {
     memoDispatch();
+    window.scrollTo(0, 0);
   }, [lang]);
   return (
     <Container fluid>
@@ -38,13 +39,13 @@ const Country = (): JSX.Element => {
             <h3>Capital {country.capital}</h3>
             <p>{country.description}</p>
           </div>
-          <div className="">
-            <div>
-              <h4 className="text-center">{t("sights")}</h4>
-              {country.places && <Slider />}
-            </div>
-            <VideoPlayer src={country.videoUrl} />
+
+          <div>
+            <h4 className="text-center">{t("sights")}</h4>
+            {country.places && <Slider />}
           </div>
+          <VideoPlayer src={country.videoUrl} />
+
           <MapCountry />
         </Col>
         <Col sm={3}>
