@@ -13,7 +13,7 @@ type Weath = {
     temp?: number
   }
   weather?: Array<{
-    main?: string
+    description?: string
     icon?: string
   }>
   name?: string
@@ -24,12 +24,13 @@ type Weath = {
 
 export function Weather() {
   const capital = useSelector((state: RootState) => state.countries.currentCountry.capital);
+  const lang = useSelector((state: RootState) => state.lang);
   
   const [weather, setWeather] = useState<Weath>({});
 
   useEffect(() => {
     if (capital) {
-      fetch(`${api.base}weather?q=${capital}&units=metric&appid=${api.key}`)
+      fetch(`${api.base}weather?q=${capital}&units=metric&appid=${api.key}&lang=${lang}`)
         .then(res => res.json())
         .then(result => {
           setWeather(result);
@@ -43,14 +44,14 @@ export function Weather() {
         {(typeof weather.main !== 'undefined') ? (
           <div>
             <div className='location-box'>
-              <div className='location'>{weather.name}, {weather.sys.country}</div>
+              <div className='location'>{weather.name}</div>
               <img className='icon-weather' src={`/public/assets/images/icons-weather/${weather.weather[0].icon}.png`} />
             </div>
             <div className='weather-box'>
               <div className='temp'>
                 {Math.round(weather.main.temp)}°c
                   </div>
-              <div className='weather'>{weather.weather[0].main}</div>
+              <div className='weather'>{weather.weather[0].description}</div>
             </div>
           </div>
         ) : ('')}
