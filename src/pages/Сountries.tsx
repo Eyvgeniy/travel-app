@@ -1,3 +1,4 @@
+import { RootState } from "models/RootState";
 import React, { useEffect, useCallback, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
@@ -6,7 +7,7 @@ import { fetchData, changeFilter } from "../slices/countries";
 
 const Сountries = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { lang } = useSelector((state) => ({
+  const { lang } = useSelector((state: RootState) => ({
     lang: state.lang,
     list: state.countries.list,
   }));
