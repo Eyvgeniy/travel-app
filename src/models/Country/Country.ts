@@ -6,7 +6,9 @@ export interface CountryShortModel {
     imageUrl: string;
     videoUrl: string;
     ISOCode: string;
-    capitalLocation: CapitalLocation
+    capitalLocation: CapitalLocation;
+    currency: string;
+    timeZone: string
 }
 
 export interface CapitalLocation {
