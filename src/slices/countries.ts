@@ -92,7 +92,6 @@ const countriesSlice = createSlice({
       } else {
         state.error = action.error.message;
       }
-      console.log(action);
       state.loading = "idle";
     });
     builder.addCase(fetchСountryData.pending, (state) => {
