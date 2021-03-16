@@ -59,9 +59,11 @@ const countriesSlice = createSlice({
   initialState: {
     actualId: null,
     list: [],
-    currentCountry: {},
     loading: "idle",
+    currentCountry: {},
+    loadingCountry: "idle",
     filter: "",
+    error: null,
   },
   reducers: {
     selectCountry(state, action) {

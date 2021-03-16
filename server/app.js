@@ -25,9 +25,11 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // Routers
 const countryRouter = require("./modules/countries/country.router");
+const userRouter = require("./modules/users/user.router");
 
 app.use(express.static(path.resolve(__dirname, "..")));
 app.use("/countries", countryRouter);
+app.use("/api/user", userRouter);
 
 app.use((req, res) => {
   res.status(StatusCodes.NOT_IMPLEMENTED).send(ReasonPhrases.NOT_IMPLEMENTED);

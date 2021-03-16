@@ -8,8 +8,9 @@ import Countries from "../pages/Сountries";
 import Country from "../pages/Country";
 import Footer from "./footer/Footer";
 import "../../public/assets/scss/App.scss";
+import RegisterForm from "./RegisterForm/RegisterForm";
 
-class App extends React.Component<Record<string, unknown>, undefined> {
+export class App extends React.Component<Record<string, unknown>, {}> {
   public render() {
     return (
       <div className="app mx-auto">
@@ -19,7 +20,11 @@ class App extends React.Component<Record<string, unknown>, undefined> {
             <Route path="/country/:id">
               <Country />
             </Route>
-            <Route path="/">
+            <Route path="/register">
+              <RegisterForm/>
+            </Route>
+
+            <Route exact path="/">
               <Countries />
             </Route>
           </Switch>

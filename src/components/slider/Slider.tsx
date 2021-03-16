@@ -10,13 +10,14 @@ import SwiperCore, {
 import { useSelector } from "react-redux";
 import "swiper/swiper-bundle.css";
 import "./style.css";
+import { RootState } from "models/RootState";
 
 SwiperCore.use([Navigation, Pagination, Controller, Thumbs, Autoplay]);
 
 export function Slider() {
   // const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [slide, setSlide] = useState(0);
-  const country = useSelector((state) => state.countries.currentCountry);
+  const country = useSelector((state: RootState) => state.countries.currentCountry);
 
   // const slides = [];
   // for (let i = 1; i <= 6; i += 1) {

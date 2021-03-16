@@ -5,9 +5,10 @@ import { selectCountry } from "../../slices/countries";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import { useTranslation } from "react-i18next";
+import { RootState } from "models/RootState";
 
 export function Cards() {
-  const countries = useSelector((state) => {
+  const countries = useSelector((state: RootState) => {
     const { list, filter } = state.countries;
     if (filter === "") return list;
     return list.filter(
@@ -36,7 +37,7 @@ export function Cards() {
               <img
                 src={`${country.imageUrl}.jpg`}
                 className="img-fluid"
-                alt={`${country.country}`}
+                alt={`${country.name}`}
               ></img>
               <div className="card-body">
                 <h5 className="card-title">{country.name}</h5>
