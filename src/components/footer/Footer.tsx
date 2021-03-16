@@ -6,7 +6,7 @@ import githubImage from "../../../public/assets/images/gitHub.png";
 const Footer = (): JSX.Element => {
   return (
     <div className="light-gray d-flex align-items-center justify-content-center">
-      <div className="w-100 d-flex justify-content-between m-3">
+      <div className="w-100 d-flex justify-content-around m-3">
         <div>
           <a href="https://rs.school/react/">
             <img src={rsSchool} width="48" height="32" alt="github link" />
