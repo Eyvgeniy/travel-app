@@ -3,20 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { changeLang } from "../../slices/lang";
+import { RootState } from "models/RootState";
 
 const values = ["en", "fr", "ru"];
 
 export const SelectForm = (): JSX.Element => {
-  const lang = useSelector((state) => state.lang);
+  const lang = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
   const history = useHistory();
   const { i18n } = useTranslation();
   const [value, setValue] = React.useState(lang);
-  const handleChange = ({ target }) => {
-    i18n.changeLanguage(target.value);
-    setValue(target.value);
-    dispatch(changeLang(target.value));
-    history.push(`${history.location.pathname}?lang=${target.value}`);
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    i18n.changeLanguage(e.target.value);
+    setValue(e.target.value);
+    dispatch(changeLang(e.target.value));
+    history.push(`${history.location.pathname}?lang=${e.target.value}`);
   };
 
   return (
@@ -34,11 +35,5 @@ export const SelectForm = (): JSX.Element => {
         ))}
       </select>
     </form>
-    // <select class="form-select" aria-label="Default select example">
-    //   <option selected>Open this select menu</option>
-    //   <option value="1">One</option>
-    //   <option value="2">Two</option>
-    //   <option value="3">Three</option>
-    // </select>
   );
 };
