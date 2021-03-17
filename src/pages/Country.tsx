@@ -1,6 +1,6 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
@@ -14,18 +14,21 @@ import { RootState } from "../models/RootState";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
+  const urlId = useParams().id;
   const { id, country, lang } = useSelector((state: RootState) => ({
     id: state.countries.actualId,
     country: state.countries.currentCountry,
     lang: state.lang,
   }));
+  const currentId = id || urlId;
   const { t } = useTranslation();
   const memoDispatch = useCallback(() => {
-    dispatch(fetchСountryData({ id, lang }));
-  }, [id, lang]);
+    dispatch(fetchСountryData({ id: currentId, lang }));
+  }, [currentId, lang]);
 
   useEffect(() => {
     memoDispatch();
+    window.scrollTo(0, 0);
   }, [lang]);
   return (
     <Container fluid>
@@ -41,13 +44,13 @@ const Country = (): JSX.Element => {
             <h3>Capital {country.capital}</h3>
             <p>{country.description}</p>
           </div>
-          <div className="">
-            <div>
-              <h4 className="text-center">{t("sights")}</h4>
-              {country.places && <Slider />}
-            </div>
-            <VideoPlayer src={country.videoUrl} />
+
+          <div>
+            <h4 className="text-center">{t("sights")}</h4>
+            {country.places && <Slider />}
           </div>
+          <VideoPlayer src={country.videoUrl} />
+
           <MapCountry />
         </Col>
         <Col sm={3}>
