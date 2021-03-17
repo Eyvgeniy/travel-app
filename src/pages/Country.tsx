@@ -35,37 +35,29 @@ const Country = (): JSX.Element => {
   return (
     <Container fluid>
       <Row>
-        <Col md={9}>
-          <section className="text-center">
-            <h3>
+        <Col sm={2}></Col>
+        <Col sm={8}>
+          <div className="text-center">
+            <h2>
               {country.name} ({country.capital})
-            </h3>
-            <Image
-              src={`${country.imageUrl}.jpg`}
-              className="w-100 mt-2"
-              rounded
-            />
+            </h2>
+          </div>
+          <Image
+            src={`${country.imageUrl}.jpg`}
+            className="w-100 mt-2"
+            rounded
+          />
+          <div className="text-center mt-3">
             <p>{country.description}</p>
-          </section>
-          <hr />
-
-          <section>
+          </div>
+          <div className="mt-5">
             <h4 className="text-center">{t("sights")}</h4>
             {country.places && <Slider />}
-          </section>
-
-          <hr />
-          <section className="text-center">
-            <h4>Посмотрите видео о стране, чтобы познакомиться поближе</h4>
-            <VideoPlayer src={country.videoUrl} />
-          </section>
-          <hr />
-          <section className="text-center">
-            <h4>Изучите карту страны, чтобы выбрать место поездки</h4>
-            <MapCountry />
-          </section>
+          </div>
+          <VideoPlayer src={country.videoUrl} />
+          <MapCountry />
         </Col>
-        <Col md={3} className="widgets">
+        <Col className="text-center" sm={2}>
           <DateTime />
           <Weather />
           <Currency />

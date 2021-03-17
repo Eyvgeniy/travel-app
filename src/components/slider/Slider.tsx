@@ -45,7 +45,7 @@ export function Slider(): JSX.Element {
         <div className="slider-description-sight text-center">
           {country.places && (
             <>
-              <h3>{country.places[slide].name}</h3>
+              <h4>{country.places[slide].name}</h4>
               <p>{country.places[slide].description}</p>
             </>
           )}
