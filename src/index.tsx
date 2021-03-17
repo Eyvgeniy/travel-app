@@ -13,13 +13,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const init = async () => {
   const windowData = Object.fromEntries(
-    new URL(window.location).searchParams.entries(),
+    new URL(window.location.href.split("/#").join("")).searchParams.entries(),
   );
 
   const VALID_KEYS = ["lang"];
   const mapKeys = {
     lang: changeLang,
   };
+
+  console.log(window.location.href.split("/#").join(""));
 
   const store = configureStore({
     reducer: rootReducer,
