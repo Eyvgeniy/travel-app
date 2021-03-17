@@ -11,6 +11,7 @@ import { Currency } from "../components/currency/Currency";
 import { fetchСountryData } from "../slices/countries";
 import { useTranslation } from "react-i18next";
 import { RootState } from "../models/RootState";
+import "./Country.css";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const Country = (): JSX.Element => {
   return (
     <Container fluid>
       <Row>
-        <Col sm={9}>
+        <Col md={9}>
           <Image
             src={`${country.imageUrl}.jpg`}
             className="w-100 mt-2"
@@ -54,7 +55,7 @@ const Country = (): JSX.Element => {
 
           <MapCountry />
         </Col>
-        <Col sm={3}>
+        <Col md={3} className="widgets">
           <DateTime />
           <Weather />
           <Currency />

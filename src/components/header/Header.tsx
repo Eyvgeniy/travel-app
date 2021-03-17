@@ -6,13 +6,13 @@ import { SelectForm } from "../select/Select";
 import { Search } from "./Search";
 
 interface HeaderProps {
-  onLogInClick: () => void
+  onLogInClick: () => void;
 }
 
 export function Header(props: HeaderProps) {
   const { pathname } = useLocation();
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
+    <nav className="navbar navbar-expand-lg navbar-light sticky-top bg-white">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           <h1>TRAVEL APP</h1>
@@ -23,7 +23,7 @@ export function Header(props: HeaderProps) {
             {pathname.includes("country") ? null : <Search />}
           </div>
           <div className="d-flex">
-            <UserInfo onLogInClick={props.onLogInClick}/>
+            <UserInfo onLogInClick={props.onLogInClick} />
           </div>
         </div>
       </div>

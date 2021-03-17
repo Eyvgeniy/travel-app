@@ -1,0 +1,14 @@
+.widgets {
+  position: fixed;
+  top: 100px;
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .widgets {
+    position: static;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
