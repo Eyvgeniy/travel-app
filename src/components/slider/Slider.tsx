@@ -41,6 +41,16 @@ export function Slider(): JSX.Element {
 
   return (
     <React.Fragment>
+      <div className="slider-description">
+        <div className="slider-description-sight text-center">
+          {country.places && (
+            <>
+              <h3>{country.places[slide].name}</h3>
+              <p>{country.places[slide].description}</p>
+            </>
+          )}
+        </div>
+      </div>
       <Swiper
         id="main"
         className="gallery-top"
@@ -86,17 +96,6 @@ export function Slider(): JSX.Element {
       >
         {thumbs}
       </Swiper>
-      <div className="slider-description">
-        <div className="slider-description-sight text-center">
-          {country.places && (
-            <>
-              <h4>{country.places[slide].name}</h4>
-              <p>{country.places[slide].description}</p>
-            </>
-          )}
-        </div>
-      </div>
-      <aside>Рейтинг достопроимечательностей</aside>
     </React.Fragment>
   );
 }

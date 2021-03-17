@@ -36,7 +36,7 @@ const UserInfo = ({ cookies, onLogInClick }: UserInfoProps): JSX.Element => {
   return (
     <>
       {user && (
-        <div>
+        <>
           <img
             src="../../../public/assets/images/user-icon.png"
             alt="user-info"
@@ -49,7 +49,7 @@ const UserInfo = ({ cookies, onLogInClick }: UserInfoProps): JSX.Element => {
           >
             Log Out
           </button>
-        </div>
+        </>
       )}
       {!user && (
         <>

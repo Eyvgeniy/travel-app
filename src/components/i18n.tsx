@@ -7,7 +7,7 @@ const resources = {
   en: {
     translation: {
       search: "Search",
-      sights: "Get to know the country's most famous landmarks",
+      sights: "Get to know most famous landmarks:",
       emptySearch: "No country found",
       signIn: "Sign In",
       signUp: "Sign Up",
@@ -25,7 +25,7 @@ const resources = {
   fr: {
     translation: {
       search: "Recherches",
-      sights: "Apprenez à connaître les monuments les plus célèbres du pays",
+      sights: "Apprenez à connaître les monuments les plus célèbres:",
       emptySearch: "Aucun pays trouvé",
       signIn: "S'identifier",
       signUp: "S'inscrire",
@@ -43,8 +43,7 @@ const resources = {
   ru: {
     translation: {
       search: "Поиск",
-      sights:
-        "Познакомьтесь с самыми известными достопримечательностями страны",
+      sights: "Познакомьтесь с самыми известными достопримечательностями:",
       emptySearch: "Не найдено ни одной страны",
       signIn: "Войти",
       signUp: "Регистрация",
