@@ -14,10 +14,12 @@ import { RootState } from "models/RootState";
 
 SwiperCore.use([Navigation, Pagination, Controller, Thumbs, Autoplay]);
 
-export function Slider() {
-  // const [thumbsSwiper, setThumbsSwiper] = useState(null);
+export function Slider(): JSX.Element {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [slide, setSlide] = useState(0);
-  const country = useSelector((state: RootState) => state.countries.currentCountry);
+  const country = useSelector(
+    (state: RootState) => state.countries.currentCountry,
+  );
 
   // const slides = [];
   // for (let i = 1; i <= 6; i += 1) {
@@ -49,22 +51,22 @@ export function Slider() {
   //     </SwiperSlide>,
   //   );
   // }
-  // const thumbs = country.places.map((place, index) => {
-  //   return (
-  //     <>
-  //       <SwiperSlide key={`thumb-${index}`}>
-  //         <img src={`${place.imageUrl}.jpg`} alt={`Thumbnail ${index}`} />
-  //       </SwiperSlide>
-  //     </>
-  //   );
-  // });
+  const thumbs = country.places.map((place, index) => {
+    return (
+      <>
+        <SwiperSlide key={`thumb-${index}`}>
+          <img src={`${place.imageUrl}.jpg`} alt={`Thumbnail ${index}`} />
+        </SwiperSlide>
+      </>
+    );
+  });
 
   return (
     <React.Fragment>
       <Swiper
         id="main"
         className="gallery-top"
-        // thumbs={{ swiper: thumbsSwiper }}
+        thumbs={{ swiper: thumbsSwiper }}
         navigation
         pagination
         spaceBetween={5}
@@ -82,7 +84,7 @@ export function Slider() {
         {slides}
       </Swiper>
 
-      {/* <Swiper
+      <Swiper
         id="thumbs"
         className="gallery-thumbs"
         spaceBetween={5}
@@ -110,7 +112,7 @@ export function Slider() {
         }}
       >
         {thumbs}
-      </Swiper> */}
+      </Swiper>
       <div className="slider-description">
         <div className="slider-description-sight text-center">
           {country.places && (
@@ -121,6 +123,7 @@ export function Slider() {
           )}
         </div>
       </div>
+      <aside>Рейтинг достопроимечательностей</aside>
     </React.Fragment>
   );
 }

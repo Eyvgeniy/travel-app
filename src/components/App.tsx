@@ -1,6 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import { Cards } from "./cards/Cards";
 import { Header } from "./header/Header";
 // import { Slider } from "./slider/Slider";
@@ -21,7 +21,7 @@ export class App extends React.Component<Record<string, unknown>, {}> {
               <Country />
             </Route>
             <Route path="/register">
-              <RegisterForm/>
+              <RegisterForm />
             </Route>
 
             <Route exact path="/">
