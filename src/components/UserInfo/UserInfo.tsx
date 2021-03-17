@@ -40,14 +40,14 @@ const UserInfo = ({ cookies, onLogInClick }: UserInfoProps): JSX.Element => {
           <img
             src="../../../public/assets/images/user-icon.png"
             alt="user-info"
-            style={{ width: "6%" }}
+            style={{ width: "30px" }}
           />
-          <span>{user.username}</span>
+          <span className="login">{user.username}</span>
           <button
             className="btn btn-outline-secondary mr-1"
             onClick={handleOnLogOut}
           >
-            Log Out
+            {t("logOut")}
           </button>
         </>
       )}

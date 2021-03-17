@@ -35,7 +35,8 @@ const Country = (): JSX.Element => {
   return (
     <Container fluid>
       <Row>
-        <Col sm={9}>
+        <Col className="text-center position-relative" sm={2}></Col>
+        <Col sm={8}>
           <section>
             <div className="text-center">
               <h2>
@@ -70,12 +71,12 @@ const Country = (): JSX.Element => {
             <MapCountry />
           </section>
         </Col>
-        <Col className="text-center position-relative" sm={3}>
-          <section className="widgets">
-            <DateTime />
-            <Weather />
-            <Currency />
-          </section>
+        <Col className="text-center position-relative" sm={2}>
+          {/* <section className="widgets"> */}
+          <DateTime />
+          <Weather />
+          <Currency />
+          {/* </section> */}
         </Col>
       </Row>
     </Container>
