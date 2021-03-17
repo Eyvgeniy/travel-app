@@ -17,13 +17,23 @@ import { UserModel } from "models/User/User";
 import { connect, useDispatch } from "react-redux";
 import { updateCurrentUser } from "../slices/user";
 import { RootState } from "models/RootState";
+import LoginForm from "./LoginForm/LoginForm";
 
 interface AppProps {
   cookies: Cookies,
   updateUser: (user: UserModel) => Promise<void>
 };
+interface AppState {
+  showLogInDialog: boolean
+}
+class App extends React.Component<AppProps, AppState> {
 
-class App extends React.Component<AppProps, {}> {
+  constructor(props: AppProps){
+    super(props);
+    this.state = {
+      showLogInDialog: false
+    }
+  }
 
   async componentDidMount(){
     const { cookies } = this.props;
@@ -39,11 +49,18 @@ class App extends React.Component<AppProps, {}> {
     }
   }
 
+  handleShowDialogClick = (state: boolean) => {
+    this.setState({
+      showLogInDialog: state
+    })
+  }
+
   public render() {
+    const {showLogInDialog} = this.state;
     return (
       <div className="app mx-auto">
         <Router>
-          <Header />
+          <Header onLogInClick={() => this.handleShowDialogClick(true)}/>
           <Switch>
             <Route path="/country/:id">
               <Country />
@@ -57,6 +74,10 @@ class App extends React.Component<AppProps, {}> {
             </Route>
           </Switch>
           <Footer />
+          <LoginForm
+            show={showLogInDialog}
+            onShowChange={this.handleShowDialogClick}
+          />
         </Router>
       </div>
     );
