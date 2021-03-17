@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path");
+const public = path.resolve(__dirname, "..", "..", "public");
+const dist = path.resolve(__dirname, "..", "..", "dist", "public");
 
 module.exports = {
   resolve: {
@@ -87,6 +91,9 @@ module.exports = {
     new HtmlWebpackPlugin({ template: "index.html.ejs" }),
     new CheckerPlugin(),
     new MiniCssExtractPlugin(),
+    new CopyPlugin({
+      patterns: [{ from: public, to: dist }],
+    }),
   ],
   performance: {
     hints: false,
