@@ -16,6 +16,7 @@ export interface UserState {
 }
 
 export interface RootState {
-  countries: CountriesState;
-  lang: string;
+    countries: CountriesState,
+    user: UserState, 
+    lang: string;
 }

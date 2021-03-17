@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { CountryShortModel } from "models/Country/Country";
 import { useHistory } from "react-router-dom";
 import routes from "../routes";
 
@@ -83,12 +84,13 @@ const countriesSlice = createSlice({
       state.loading = "pending";
     });
     builder.addCase(fetchData.fulfilled, (state, action) => {
-      state.list = action.payload;
+      state.list = action.payload as Array<CountryShortModel>;
       state.loading = "idle";
     });
     builder.addCase(fetchData.rejected, (state, action) => {
       if (action.payload) {
-        state.error = action.payload.errorMessage;
+        const payload: {errorMessage: string} = action.payload as {errorMessage: string}
+        state.error = payload.errorMessage ;
       } else {
         state.error = action.error.message;
       }
@@ -103,7 +105,8 @@ const countriesSlice = createSlice({
     });
     builder.addCase(fetchСountryData.rejected, (state, action) => {
       if (action.payload) {
-        state.error = action.payload.errorMessage;
+        const payload: {errorMessage: string} = action.payload as {errorMessage: string}
+        state.error = payload.errorMessage ;
       } else {
         state.error = action.error.message;
       }

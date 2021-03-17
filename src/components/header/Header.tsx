@@ -1,16 +1,20 @@
 import * as React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UserInfo from "../UserInfo/UserInfo";
 import { useLocation } from "react-router-dom";
-import { Container, Nav, Navbar } from "react-bootstrap";
 import { SelectForm } from "../select/Select";
 import { Search } from "./Search";
 
-export function Header() {
+interface HeaderProps {
+  onLogInClick: () => void
+}
+
+export function Header(props: HeaderProps) {
   const { pathname } = useLocation();
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <h1>TRAVEL APP</h1>
         </a>
         <div className="d-flex">
@@ -19,8 +23,7 @@ export function Header() {
             {pathname.includes("country") ? null : <Search />}
           </div>
           <div className="d-flex">
-            <button className="btn btn-outline-secondary mr-1">Sign In </button>
-            <button className="btn btn-outline-secondary mr-1">Sign Un </button>
+            <UserInfo onLogInClick={props.onLogInClick}/>
           </div>
         </div>
       </div>

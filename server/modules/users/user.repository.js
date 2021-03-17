@@ -24,7 +24,7 @@ const getUserByCodeName = async (userName) => {
       return user;
     }
     
-    throw new NotFoundError(ENTITY_NAME);
+    return null;
 };
 
 const getUserById = async (id) => {

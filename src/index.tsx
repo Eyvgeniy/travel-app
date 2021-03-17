@@ -10,27 +10,26 @@ import { changeLang } from "./slices/lang";
 import "./components/i18n";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 const init = async () => {
   const windowData = Object.fromEntries(
-    new URL(window.location.href).searchParams.entries(),
+    new URL(window.location.href.split("/#").join("")).searchParams.entries(),
   );
 
-  const VALID_KEYS = ["lang"];
   const mapKeys = {
     lang: changeLang,
   };
+
+  console.log(window.location.href.split("/#").join(""));
 
   const store = configureStore({
     reducer: rootReducer,
     // preloadedState,
   });
 
-  VALID_KEYS.forEach((key) => {
-    if (windowData[key]) {
-      store.dispatch(mapKeys[key](windowData[key]));
-    }
-  });
-
+  if (windowData["lang"]) {
+    store.dispatch(mapKeys.lang((windowData["lang"])));
+  }
   render(
     <CookiesProvider>
       <Provider store={store}>

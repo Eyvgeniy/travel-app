@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
@@ -14,15 +14,18 @@ import { RootState } from "../models/RootState";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
+  const params = useParams() as {id: string};
+  const urlId = params.id;
   const { id, country, lang } = useSelector((state: RootState) => ({
     id: state.countries.actualId,
     country: state.countries.currentCountry,
     lang: state.lang,
   }));
+  const currentId = id || urlId;
   const { t } = useTranslation();
   const memoDispatch = useCallback(() => {
-    dispatch(fetchСountryData({ id, lang }));
-  }, [id, lang]);
+    dispatch(fetchСountryData({ id: currentId, lang }));
+  }, [currentId, lang]);
 
   useEffect(() => {
     memoDispatch();

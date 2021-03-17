@@ -28,24 +28,26 @@ router.post(
 router.post(
     "/auth/signin",
     wrap(async (req, res) => {
-        const data = await userService.signIn(req.body.username, req.body.password)
-        res.send(data);
+        try{
+            const data = await userService.signIn(req.body.username, req.body.password);
+            res.send(data);
+        }catch(e){
+            res.status(400).send(e);
+        }
     })
 );
 
-router.post(
-    "/auth/signin",
+router.get(
+    "/auth/check",
     wrap(async (req, res) => {
-        const data = await userService.signIn(req.body.username, req.body.password)
-        res.send(data);
-    })
-);
-
-router.post(
-    "/auth/check-token-validity",
-    wrap(async (req, res) => {
-        const data = await userService.checkValidity(req.body.token)
-        res.send(data);
+        try{
+            console.log(req.query.token)
+            console.log(req.query)
+            const data = await userService.checkValidity(req.query.token)
+            res.status(200).send(data);
+        }catch(e){
+            res.status(400).send();
+        }
     })
 );
 
