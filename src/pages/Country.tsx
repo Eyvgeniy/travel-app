@@ -5,6 +5,9 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import { Slider } from "../components/slider/Slider";
 import VideoPlayer from "../components/player/VideoPlayer";
 import MapCountry from "../components/map/MapCountry";
+import { Weather } from "../components/weather/Weather";
+import { DateTime } from "../components/date/DateTime";
+import { Currency } from "../components/currency/Currency";
 import { fetchСountryData } from "../slices/countries";
 import { useTranslation } from "react-i18next";
 import { RootState } from "../models/RootState";
@@ -49,30 +52,9 @@ const Country = (): JSX.Element => {
           <MapCountry />
         </Col>
         <Col sm={3}>
-          <div className="bg-info mb-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            debitis et molestiae, quisquam incidunt dignissimos consequatur
-            labore, sequi fuga dolore tenetur exercitationem odit asperiores
-            porro deserunt! Error ratione assumenda voluptatibus, vero aut
-            deleniti nulla voluptate debitis blanditiis quae magni voluptatum
-            beatae illum optio ea, eius in, fuga quis perspiciatis! Veritatis.
-          </div>
-          <div className="bg-info mb-2 ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            debitis et molestiae, quisquam incidunt dignissimos consequatur
-            labore, sequi fuga dolore tenetur exercitationem odit asperiores
-            porro deserunt! Error ratione assumenda voluptatibus, vero aut
-            deleniti nulla voluptate debitis blanditiis quae magni voluptatum
-            beatae illum optio ea, eius in, fuga quis perspiciatis! Veritatis.
-          </div>
-          <div className="bg-info mb-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            debitis et molestiae, quisquam incidunt dignissimos consequatur
-            labore, sequi fuga dolore tenetur exercitationem odit asperiores
-            porro deserunt! Error ratione assumenda voluptatibus, vero aut
-            deleniti nulla voluptate debitis blanditiis quae magni voluptatum
-            beatae illum optio ea, eius in, fuga quis perspiciatis! Veritatis.
-          </div>
+          <DateTime />
+          <Weather />
+          <Currency />
         </Col>
       </Row>
     </Container>
