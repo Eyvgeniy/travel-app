@@ -4,9 +4,11 @@ import "./style.css";
 import { RootState } from '../../models/RootState';
 
 export const DateTime = () => {
-    
+
     const timeZone = useSelector((state: RootState) => state.countries.currentCountry.timeZone);
-    
+
+    const lang = useSelector((state: RootState) => state.lang);
+
     const formatDate = () => {
         const today = new Date();
         const options: object = {
@@ -20,7 +22,7 @@ export const DateTime = () => {
             hour12: false,
             timeZone: timeZone
         };
-        return new Intl.DateTimeFormat("en-EN", options).format(today);
+        return new Intl.DateTimeFormat(lang, options).format(today);
     };
 
     const [date, setDate] = useState(new Date());
