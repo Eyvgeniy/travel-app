@@ -8,11 +8,12 @@ import { useHistory } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 interface UserInfoProps {
-    cookies: Cookies
+    cookies: Cookies;
+    onLogInClick: () => void
 }
 
 
-const UserInfo = ({cookies}: UserInfoProps): JSX.Element => {
+const UserInfo = ({cookies, onLogInClick}: UserInfoProps): JSX.Element => {
     const dispatch = useDispatch();
     const { user } = useSelector((state: RootState) => ({
       user: state.user.currentUser
@@ -20,14 +21,14 @@ const UserInfo = ({cookies}: UserInfoProps): JSX.Element => {
     const history = useHistory();
 
     const handleOnLogIn = () => {
-        history.push(`/login`);
+        onLogInClick();
     }; 
     const handleOnRegister = () => {
         history.push(`/register`);
     };
 
     const handleOnLogOut = async () => {
-        cookies.set(Auth.COOKIE_TOKEN, user.accessToken);
+        cookies.remove(Auth.COOKIE_TOKEN);
         await dispatch(logOut(null));
     };
 

@@ -5,12 +5,16 @@ import { useLocation } from "react-router-dom";
 import { SelectForm } from "../select/Select";
 import { Search } from "./Search";
 
-export function Header() {
+interface HeaderProps {
+  onLogInClick: () => void
+}
+
+export function Header(props: HeaderProps) {
   const { pathname } = useLocation();
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <h1>TRAVEL APP</h1>
         </a>
         <div className="d-flex">
@@ -19,7 +23,7 @@ export function Header() {
             {pathname.includes("country") ? null : <Search />}
           </div>
           <div className="d-flex">
-            <UserInfo/>
+            <UserInfo onLogInClick={props.onLogInClick}/>
           </div>
         </div>
       </div>
