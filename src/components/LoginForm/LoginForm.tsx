@@ -8,6 +8,7 @@ import { Cookies, withCookies } from "react-cookie";
 import { RootState } from "models/RootState";
 import { Auth } from "../../AppConstants";
 import { UserModel } from "models/User/User";
+import { useTranslation } from "react-i18next";
 
 interface LoginFormProps {
   cookies: Cookies;
@@ -21,6 +22,7 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
   const [passWord, setPassWord] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
   const { cookies } = props;
 
   const handleClose = () => {
@@ -61,7 +63,7 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
     <div>
       <Modal show={props.show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Log In</Modal.Title>
+          <Modal.Title>{t("logIn")}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -69,7 +71,7 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
             <FormControl
               aria-label="Default"
               type="text"
-              placeholder="Enter user name"
+              placeholder={t("Enter user name")}
               aria-describedby="inputGroup-sizing-default"
               onChange={handleUserNameChange}
               required
@@ -82,7 +84,7 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
               aria-label="Default"
               defaultValue={passWord}
               type="password"
-              placeholder="Type Password"
+              placeholder={t("Type Password")}
               aria-describedby="inputGroup-sizing-default"
               onChange={handlePasswordChange}
               required
@@ -95,14 +97,14 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
 
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("close")}
           </Button>
           <Button
             variant="primary"
             onClick={handleSubmit}
             disabled={isSubmitting}
           >
-            Submit
+            {t("submit")}
           </Button>
         </Modal.Footer>
       </Modal>

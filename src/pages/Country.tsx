@@ -14,7 +14,7 @@ import { RootState } from "../models/RootState";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
-  const params = useParams() as {id: string};
+  const params = useParams() as { id: string };
   const urlId = params.id;
   const { id, country, lang } = useSelector((state: RootState) => ({
     id: state.countries.actualId,
@@ -41,8 +41,8 @@ const Country = (): JSX.Element => {
             rounded
           />
           <div className="text-center">
-            <h2>Country {country.name}</h2>
-            <h3>Capital {country.capital}</h3>
+            <h2>{`${t("Country")} ${country.name}`}</h2>
+            <h3>{`${t("Capital")} ${country.capital}`}</h3>
             <p>{country.description}</p>
           </div>
 

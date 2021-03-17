@@ -11,6 +11,7 @@ import { Auth } from "../../AppConstants";
 import { UserModel } from "models/User/User";
 import { useHistory } from "react-router-dom";
 import "./RegisterForm.css";
+import { useTranslation } from "react-i18next";
 interface RegisterFormProps {
   cookies: Cookies;
 }
@@ -22,6 +23,7 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isSubmitting, setSubmitting] = useState(false);
   const history = useHistory();
+  const { t } = useTranslation();
   const { cookies } = props;
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -55,11 +57,11 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
     <div className="main">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formUserName">
-          <Form.Label>User name</Form.Label>
+          <Form.Label>{t("user")}</Form.Label>
           <Form.Control
             defaultValue={userName}
             type="text"
-            placeholder="Enter user name"
+            placeholder={t("Enter user name")}
             onChange={handleUserNameChange}
             onFocus={() => setErrorMessage(null)}
             disabled={isSubmitting}
@@ -68,11 +70,11 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
         {errorMessage && <p className="text-danger">{errorMessage}</p>}
 
         <Form.Group controlId="formPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>{t("password")}</Form.Label>
           <Form.Control
             defaultValue={passWord}
             type="password"
-            placeholder="Type Password"
+            placeholder={t("Type Password")}
             onChange={handlePasswordChange}
             autoComplete="Off"
             required
@@ -81,7 +83,7 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
         </Form.Group>
 
         <Button variant="primary" type="submit" disabled={isSubmitting}>
-          Submit
+          {t("submit")}
         </Button>
       </Form>
     </div>
