@@ -32,13 +32,27 @@ export function Currency() {
     }
   }, [setRates, currency]);
 
+  function saveToFixed(numb: number) {
+    if (typeof numb === "number") {
+      return numb.toFixed(2);
+    } else 1;
+  }
+
   return (
     <div>
       {typeof rate.rates !== "undefined" ? (
         <div className="rates-box">
-          <div>1 EUR {currency === "EUR" ? 1 : rate.rates.EUR.toFixed(2)}</div>
-          <div>1 USD {currency === "USD" ? 1 : rate.rates.USD.toFixed(2)}</div>
-          <div>100 RUB {rate.rates.RUB.toFixed(2)}</div>
+          <div>
+            1 {currency} -{" "}
+            {currency === "EUR" ? 1 : saveToFixed(rate.rates.EUR)} EUR
+          </div>
+          <div>
+            1 {currency} -{" "}
+            {currency === "USD" ? 1 : saveToFixed(rate.rates.USD)} USD
+          </div>
+          <div>
+            1 {currency} - {saveToFixed(rate.rates.RUB)} RUB
+          </div>
         </div>
       ) : (
         ""
