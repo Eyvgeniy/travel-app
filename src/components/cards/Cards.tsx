@@ -21,12 +21,12 @@ export function Cards() {
   const history = useHistory();
   const { t } = useTranslation();
   return (
-    <div className="d-flex flex-wrap justify-content-between cards h-75">
+    <div className="d-flex flex-wrap justify-content-around cards h-75">
       {countries.length > 0 ? (
         countries.map((country) => {
           return (
             <div
-              className="card mb-5"
+              className="card mb-5 mr-2"
               style={{ maxWidth: "17rem" }}
               key={country.id}
               onClick={() => {
