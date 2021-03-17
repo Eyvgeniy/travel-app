@@ -27,7 +27,7 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 const countryRouter = require("./modules/countries/country.router");
 const userRouter = require("./modules/users/user.router");
 
-app.use(express.static(path.resolve(__dirname, "..")));
+app.use(express.static(path.resolve(__dirname, "..", "dist")));
 app.use("/countries", countryRouter);
 app.use("/api/user", userRouter);
 
