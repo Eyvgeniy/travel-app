@@ -17,6 +17,7 @@ type Сurrencies = {
 
 export function Currency() {
     const currency = useSelector((state: RootState) => state.countries.currentCountry.currency);
+
     const [rate, setRates] = useState<Сurrencies>({});
 
     useEffect(() => {
@@ -32,9 +33,10 @@ export function Currency() {
 
     function saveToFixed(numb: number) {
         if (typeof numb === 'number') {
-            return numb.toFixed(2)
-        }
-        else 1
+            if (numb % 10 !== 0) {
+                return numb.toFixed(2);
+            } else numb;
+        } else 1
     }
 
     return (
