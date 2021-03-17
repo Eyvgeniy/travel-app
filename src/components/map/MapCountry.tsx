@@ -37,7 +37,7 @@ const countriesMap = new Map([
 ]);
 
 const locationCenter: [number, number] = [30, 20];
-
+//@ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl,

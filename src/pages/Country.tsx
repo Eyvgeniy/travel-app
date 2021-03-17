@@ -14,7 +14,8 @@ import { RootState } from "../models/RootState";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
-  const urlId = useParams().id;
+  const params = useParams() as {id: string};
+  const urlId = params.id;
   const { id, country, lang } = useSelector((state: RootState) => ({
     id: state.countries.actualId,
     country: state.countries.currentCountry,

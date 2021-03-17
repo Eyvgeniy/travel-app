@@ -16,7 +16,6 @@ const init = async () => {
     new URL(window.location.href.split("/#").join("")).searchParams.entries(),
   );
 
-  const VALID_KEYS = ["lang"];
   const mapKeys = {
     lang: changeLang,
   };
@@ -28,11 +27,9 @@ const init = async () => {
     // preloadedState,
   });
 
-  VALID_KEYS.forEach((key) => {
-    if (windowData[key]) {
-      store.dispatch(mapKeys[key](windowData[key]));
-    }
-  });
+  if (windowData["lang"]) {
+    store.dispatch(mapKeys.lang((windowData["lang"])));
+  }
   render(
     <CookiesProvider>
       <Provider store={store}>
