@@ -15,7 +15,7 @@ const app = express();
 const swaggerDoc = YAML.load(path.join(__dirname, "./docs/doc.yaml"));
 
 app.use(cors());
-app.use(helmet());
+// app.use(helmet());
 app.use(express.json());
 
 app.use(requestLogMiddleware);
