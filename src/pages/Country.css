@@ -6,6 +6,7 @@
 
 section {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 hr {
@@ -16,7 +17,7 @@ hr {
   border-top: 2px solid #333;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .widgets {
     position: static;
     display: flex;

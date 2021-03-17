@@ -42,7 +42,7 @@ export function Currency() {
   }
 
   return (
-    <div>
+    <>
       {typeof rate.rates !== "undefined" ? (
         <div className="rates-box">
           <div>
@@ -60,6 +60,6 @@ export function Currency() {
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }

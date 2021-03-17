@@ -20,6 +20,8 @@ const resources = {
       Country: "Country",
       user: "User",
       password: "Password",
+      video: "Watch the video to get to know better",
+      map: "Explore the map and choose a place to travel",
     },
   },
   fr: {
@@ -38,6 +40,8 @@ const resources = {
       Country: "l' État",
       user: "Utilisateu",
       password: "Passe",
+      video: "Regardez la vidéo pour mieux vous connaître",
+      map: "Explorez la carte et choisissez un lieu pour voyager",
     },
   },
   ru: {
@@ -56,6 +60,8 @@ const resources = {
       Country: "Страна",
       user: "Пользователь",
       password: "Пароль",
+      video: "Посмотрите видео, чтобы познакомиться поближе",
+      map: "Изучите карту и выберить место для поездки",
     },
   },
 };

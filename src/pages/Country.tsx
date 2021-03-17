@@ -35,32 +35,47 @@ const Country = (): JSX.Element => {
   return (
     <Container fluid>
       <Row>
-        <Col sm={2}></Col>
-        <Col sm={8}>
-          <div className="text-center">
-            <h2>
-              {country.name} ({country.capital})
-            </h2>
-          </div>
-          <Image
-            src={`${country.imageUrl}.jpg`}
-            className="w-100 mt-2"
-            rounded
-          />
-          <div className="text-center mt-3">
-            <p>{country.description}</p>
-          </div>
-          <div className="mt-5">
-            <h4 className="text-center">{t("sights")}</h4>
-            {country.places && <Slider />}
-          </div>
-          <VideoPlayer src={country.videoUrl} />
-          <MapCountry />
+        <Col sm={9}>
+          <section>
+            <div className="text-center">
+              <h2>
+                {country.name} ({country.capital})
+              </h2>
+            </div>
+            <Image
+              src={`${country.imageUrl}.jpg`}
+              className="w-100 mt-2"
+              rounded
+            />
+
+            <div className="text-center mt-3">
+              <p>{country.description}</p>
+            </div>
+          </section>
+          <hr />
+          <section>
+            <div className="mt-5">
+              <h4 className="text-center">{t("sights")}</h4>
+              {country.places && <Slider />}
+            </div>
+          </section>
+          <hr />
+          <section>
+            <h3>{t("video")}</h3>
+            <VideoPlayer src={country.videoUrl} />
+          </section>
+          <hr />
+          <section>
+            <h3>{t("map")}</h3>
+            <MapCountry />
+          </section>
         </Col>
-        <Col className="text-center" sm={2}>
-          <DateTime />
-          <Weather />
-          <Currency />
+        <Col className="text-center position-relative" sm={3}>
+          <section className="widgets">
+            <DateTime />
+            <Weather />
+            <Currency />
+          </section>
         </Col>
       </Row>
     </Container>

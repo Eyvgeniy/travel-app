@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: bottom;
   transition: 0.4 ease;
-  width: 100%;
+  width: 80%;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   margin: 15px auto;
@@ -71,7 +71,7 @@ main {
   .weather-box .temp {
     font-size: 1.5rem;
   }
-  .weather-box .weather { 
+  .weather-box .weather {
     font-size: 1.2rem;
   }
 }
