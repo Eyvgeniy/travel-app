@@ -26,7 +26,6 @@ export function Currency() {
       fetch(`${api.base}${currency}&HTTP / 2`)
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
           setRates(result);
         });
     }

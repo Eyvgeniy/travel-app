@@ -89,8 +89,10 @@ const countriesSlice = createSlice({
     });
     builder.addCase(fetchData.rejected, (state, action) => {
       if (action.payload) {
-        const payload: {errorMessage: string} = action.payload as {errorMessage: string}
-        state.error = payload.errorMessage ;
+        const payload: { errorMessage: string } = action.payload as {
+          errorMessage: string;
+        };
+        state.error = payload.errorMessage;
       } else {
         state.error = action.error.message;
       }
@@ -105,51 +107,16 @@ const countriesSlice = createSlice({
     });
     builder.addCase(fetchСountryData.rejected, (state, action) => {
       if (action.payload) {
-        const payload: {errorMessage: string} = action.payload as {errorMessage: string}
-        state.error = payload.errorMessage ;
+        const payload: { errorMessage: string } = action.payload as {
+          errorMessage: string;
+        };
+        state.error = payload.errorMessage;
       } else {
         state.error = action.error.message;
       }
-      console.log(action);
       state.loadingCountry = "idle";
     });
   },
-  // {
-  //   [fetchData.fulfilled]: (state, action) => {
-  //     state.list = action.payload;
-  //     state.loading = "idle";
-  //   },
-  //   [fetchData.pending]: (state) => {
-  //     state.loading = "pending";
-  //   },
-  //   [fetchData.rejected]: (state, action) => {
-  //     if (action.payload) {
-  //       // Being that we passed in ValidationErrors to rejectType in `createAsyncThunk`, the payload will be available here.
-  //       state.error = action.payload.errorMessage;
-  //     } else {
-  //       state.error = action.error.message;
-  //     }
-  //     console.log(action);
-  //     state.loading = "idle";
-  //   },
-  //   [fetchСountryData.fulfilled]: (state, action) => {
-  //     state.currentCountry = action.payload;
-  //     state.loadingCountry = "idle";
-  //   },
-  //   [fetchСountryData.pending]: (state) => {
-  //     state.loadingCountry = "pending";
-  //   },
-  //   [fetchСountryData.rejected]: (state, action) => {
-  //     if (action.payload) {
-  //       // Being that we passed in ValidationErrors to rejectType in `createAsyncThunk`, the payload will be available here.
-  //       state.error = action.payload.errorMessage;
-  //     } else {
-  //       state.error = action.error.message;
-  //     }
-  //     console.log(action);
-  //     state.loadingCountry = "idle";
-  //   },
-  // },
 });
 
 export const { selectCountry, changeFilter } = countriesSlice.actions;

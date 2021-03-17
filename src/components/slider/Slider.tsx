@@ -74,12 +74,7 @@ export function Slider(): JSX.Element {
         autoplay={{
           delay: 5000,
         }}
-        onInit={(swiper) => console.log("Swiper initialized!", swiper)}
-        onSlideChange={(swiper) => {
-          setSlide(swiper.activeIndex);
-          console.log("Slide index changed to: ", swiper.activeIndex);
-        }}
-        onReachEnd={() => console.log("Swiper end reached")}
+        onSlideChange={(swiper) => setSlide(swiper.activeIndex)}
       >
         {slides}
       </Swiper>

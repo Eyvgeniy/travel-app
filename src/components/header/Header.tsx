@@ -13,11 +13,11 @@ export function Header(props: HeaderProps) {
   const { pathname } = useLocation();
   return (
     <nav className="navbar navbar-expand-lg navbar-light sticky-top bg-white">
-      <div className="container-fluid">
+      <div className="container-fluid d-flex justify-content-between">
         <a className="navbar-brand" href="/">
           <h1>TRAVEL APP</h1>
         </a>
-        <div className="d-flex">
+        <div className="d-flex flex-wrap">
           <div className="d-flex mr-1">
             <SelectForm />
             {pathname.includes("country") ? null : <Search />}

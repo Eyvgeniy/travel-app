@@ -40,7 +40,7 @@ const UserInfo = ({ cookies, onLogInClick }: UserInfoProps): JSX.Element => {
           <img
             src="../../../public/assets/images/user-icon.png"
             alt="user-info"
-            style={{ width: "11%" }}
+            style={{ width: "6%" }}
           />
           <span>{user.username}</span>
           <button

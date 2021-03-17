@@ -30,7 +30,7 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
     event.preventDefault();
     setSubmitting(true);
     try {
-      const data = await axios.post(routes.signUp(), {
+      const data = await axios.post(routes.signUp(userName, passWord), {
         username: userName,
         password: passWord,
       });

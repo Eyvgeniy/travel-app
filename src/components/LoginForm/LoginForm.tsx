@@ -27,12 +27,14 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
 
   const handleClose = () => {
     setError(null);
+    setUserName("");
+    setPassWord("");
     props.onShowChange(false);
   };
 
   const handleShow = () => props.onShowChange(true);
 
-  const handleSubmit = async (event: React.MouseEvent<HTMLElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitting(true);
     try {
@@ -65,48 +67,45 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
         <Modal.Header closeButton>
           <Modal.Title>{t("logIn")}</Modal.Title>
         </Modal.Header>
+        <Form onSubmit={handleSubmit}>
+          <Modal.Body>
+            <InputGroup className="mb-3">
+              <FormControl
+                aria-label="Default"
+                type="text"
+                placeholder={t("Enter user name")}
+                aria-describedby="inputGroup-sizing-default"
+                onChange={handleUserNameChange}
+                required
+                disabled={isSubmitting}
+                onFocus={() => setError(null)}
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                aria-label="Default"
+                defaultValue={passWord}
+                type="password"
+                placeholder={t("Type Password")}
+                aria-describedby="inputGroup-sizing-default"
+                onChange={handlePasswordChange}
+                required
+                disabled={isSubmitting}
+                onFocus={() => setError(null)}
+              />
+            </InputGroup>
+            {error && <p className="text-danger">{error}</p>}
+          </Modal.Body>
 
-        <Modal.Body>
-          <InputGroup className="mb-3">
-            <FormControl
-              aria-label="Default"
-              type="text"
-              placeholder={t("Enter user name")}
-              aria-describedby="inputGroup-sizing-default"
-              onChange={handleUserNameChange}
-              required
-              disabled={isSubmitting}
-              onFocus={() => setError(null)}
-            />
-          </InputGroup>
-          <InputGroup className="mb-3">
-            <FormControl
-              aria-label="Default"
-              defaultValue={passWord}
-              type="password"
-              placeholder={t("Type Password")}
-              aria-describedby="inputGroup-sizing-default"
-              onChange={handlePasswordChange}
-              required
-              disabled={isSubmitting}
-              onFocus={() => setError(null)}
-            />
-          </InputGroup>
-          {error && <p className="text-danger">{error}</p>}
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            {t("close")}
-          </Button>
-          <Button
-            variant="primary"
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-          >
-            {t("submit")}
-          </Button>
-        </Modal.Footer>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              {t("close")}
+            </Button>
+            <Button type="submit" variant="primary" disabled={isSubmitting}>
+              {t("submit")}
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
     </div>
   );

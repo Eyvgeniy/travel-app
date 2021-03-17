@@ -41,19 +41,23 @@ const Country = (): JSX.Element => {
             className="w-100 mt-2"
             rounded
           />
-          <div className="text-center">
+          <section className="text-center">
             <h2>{`${t("Country")} ${country.name}`}</h2>
             <h3>{`${t("Capital")} ${country.capital}`}</h3>
             <p>{country.description}</p>
-          </div>
+          </section>
 
-          <div>
+          <section>
             <h4 className="text-center">{t("sights")}</h4>
             {country.places && <Slider />}
-          </div>
-          <VideoPlayer src={country.videoUrl} />
-
-          <MapCountry />
+          </section>
+          <section>
+            <h4>Посмотрите видео о стране, чтобы познакомиться поближе</h4>
+            <VideoPlayer src={country.videoUrl} />
+          </section>
+          <section>
+            <MapCountry />
+          </section>
         </Col>
         <Col md={3} className="widgets">
           <DateTime />
