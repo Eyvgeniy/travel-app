@@ -16,18 +16,26 @@ type Сurrencies = {
 };
 
 export function Currency() {
-  const currency = useSelector(
-    (state: RootState) => state.countries.currentCountry.currency,
-  );
-  const [rate, setRates] = useState<Сurrencies>({});
+    const currency = useSelector((state: RootState) => state.countries.currentCountry.currency);
 
-  useEffect(() => {
-    if (currency) {
-      fetch(`${api.base}${currency}&HTTP / 2`)
-        .then((res) => res.json())
-        .then((result) => {
-          setRates(result);
-        });
+    const [rate, setRates] = useState<Сurrencies>({});
+
+    useEffect(() => {
+        if (currency) {
+            fetch(`${api.base}${currency}&HTTP / 2`)
+                .then(res => res.json())
+                .then(result => {
+                    setRates(result)
+                });
+        }
+    }, [setRates, currency])
+
+    function saveToFixed(numb: number) {
+        if (typeof numb === 'number') {
+            if (numb % 10 !== 0) {
+                return numb.toFixed(2);
+            } else numb;
+        } else 1
     }
   }, [setRates, currency]);
 

@@ -21,17 +21,6 @@ export function Slider(): JSX.Element {
     (state: RootState) => state.countries.currentCountry,
   );
 
-  // const slides = [];
-  // for (let i = 1; i <= 6; i += 1) {
-  //   slides.push(
-  //     <SwiperSlide key={`slide-${i}`}>
-  //       <img
-  //         src={`../../public/assets/img/country/brit_${i}.jpg`}
-  //         alt={`Slide ${i}`}
-  //       />
-  //     </SwiperSlide>,
-  //   );
-  // }
   const slides = country.places.map((place, index) => {
     return (
       <SwiperSlide key={`slide-${index}`} className="relative">
@@ -40,17 +29,6 @@ export function Slider(): JSX.Element {
     );
   });
 
-  // const thumbs = [];
-  // for (let i = 1; i <= 6; i += 1) {
-  //   thumbs.push(
-  //     <SwiperSlide key={`thumb-${i}`}>
-  //       <img
-  //         src={`../../public/assets/img/country/brit_${i}.jpg`}
-  //         alt={`Thumbnail ${i}`}
-  //       />
-  //     </SwiperSlide>,
-  //   );
-  // }
   const thumbs = country.places.map((place, index) => {
     return (
       <>
