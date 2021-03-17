@@ -12,21 +12,27 @@ import { UserModel } from "models/User/User";
 interface LoginFormProps {
   cookies: Cookies;
   show: boolean;
-  onShowChange: (state: boolean) => void
+  onShowChange: (state: boolean) => void;
 }
 
 const LoginForm = (props: LoginFormProps): JSX.Element => {
-
   const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
   const { cookies } = props;
 
-  const handleClose = () => props.onShowChange(false);
+  const handleClose = () => {
+    setError(null);
+    props.onShowChange(false);
+  };
+
   const handleShow = () => props.onShowChange(true);
 
   const handleSubmit = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
+    setSubmitting(true);
     try {
       const data = await axios.post(routes.signIn(userName, passWord), {
         username: userName,
@@ -36,8 +42,10 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
       cookies.set(Auth.COOKIE_TOKEN, user.accessToken);
       await dispatch(updateCurrentUser(user));
       handleClose();
+      setSubmitting(false);
     } catch (err) {
-      console.log(err);
+      setSubmitting(false);
+      setError(err.response.data.reason);
     }
   };
 
@@ -51,38 +59,53 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
 
   return (
     <div>
-        <Modal show={props.show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title>Log In</Modal.Title>
-            </Modal.Header>
+      <Modal show={props.show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Log In</Modal.Title>
+        </Modal.Header>
 
-            <Modal.Body>
-                <InputGroup className="mb-3">
-                    <FormControl
-                        aria-label="Default"
-                        type="text"
-                        placeholder="Enter user name"
-                        aria-describedby="inputGroup-sizing-default"
-                        onChange={handleUserNameChange}
-                    />
-                </InputGroup>
-                <InputGroup className="mb-3">
-                    <FormControl
-                        aria-label="Default"
-                        defaultValue={passWord}
-                        type="password"
-                        placeholder="Type Password"
-                        aria-describedby="inputGroup-sizing-default"
-                        onChange={handlePasswordChange}
-                    />
-                </InputGroup>
-            </Modal.Body>
+        <Modal.Body>
+          <InputGroup className="mb-3">
+            <FormControl
+              aria-label="Default"
+              type="text"
+              placeholder="Enter user name"
+              aria-describedby="inputGroup-sizing-default"
+              onChange={handleUserNameChange}
+              required
+              disabled={isSubmitting}
+              onFocus={() => setError(null)}
+            />
+          </InputGroup>
+          <InputGroup className="mb-3">
+            <FormControl
+              aria-label="Default"
+              defaultValue={passWord}
+              type="password"
+              placeholder="Type Password"
+              aria-describedby="inputGroup-sizing-default"
+              onChange={handlePasswordChange}
+              required
+              disabled={isSubmitting}
+              onFocus={() => setError(null)}
+            />
+          </InputGroup>
+          {error && <p className="text-danger">{error}</p>}
+        </Modal.Body>
 
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleShow}>Close</Button>
-                <Button variant="primary" onClick={handleSubmit}>Submit</Button>
-            </Modal.Footer>
-        </Modal>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+          >
+            Submit
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
