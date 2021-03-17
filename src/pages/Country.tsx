@@ -14,7 +14,7 @@ import { RootState } from "../models/RootState";
 
 const Country = (): JSX.Element => {
   const dispatch = useDispatch();
-  const params = useParams() as {id: string};
+  const params = useParams() as { id: string };
   const urlId = params.id;
   const { id, country, lang } = useSelector((state: RootState) => ({
     id: state.countries.actualId,
@@ -34,27 +34,28 @@ const Country = (): JSX.Element => {
   return (
     <Container fluid>
       <Row>
-        <Col sm={9}>
+        <Col sm={2}>
+        </Col>
+        <Col sm={8}>
+          <div className="text-center">
+            <h2>{country.name} ({country.capital})</h2>
+          </div>
           <Image
             src={`${country.imageUrl}.jpg`}
             className="w-100 mt-2"
             rounded
           />
-          <div className="text-center">
-            <h2>{country.name}</h2>
-            <h3>{country.capital}</h3>
+          <div className="text-center mt-3">
             <p>{country.description}</p>
           </div>
-
-          <div>
+          <div className="mt-5">
             <h4 className="text-center">{t("sights")}</h4>
             {country.places && <Slider />}
           </div>
           <VideoPlayer src={country.videoUrl} />
-
           <MapCountry />
         </Col>
-        <Col sm={3}>
+        <Col className="text-center" sm={2}>
           <DateTime />
           <Weather />
           <Currency />
