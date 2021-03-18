@@ -37,10 +37,13 @@ const getUserById = async (id) => {
     throw new NotFoundError(ENTITY_NAME);
 };
 
-const saveUser = async (userName, passwordHash) => {
+const saveUser = async (userName, passwordHash, profileImg) => {
   const user = new User({
     username: userName,
-    password: passwordHash
+    password: passwordHash,
+    image:{
+      contentType: profileImg
+    }
   });
 
   return user.save()

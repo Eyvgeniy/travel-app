@@ -20,17 +20,25 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
+  const [file, setFile] = useState(null);
   const history = useHistory();
   const { cookies } = props;
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const data = await axios.post(routes.signUp(userName, passWord), {
+      
+      const formData = new FormData();
+      formData.append('filedata', file);
+      formData.append('username', userName);
+      formData.append('password', passWord);
+      const data = await axios.post(routes.signUp(userName, passWord), formData, {});
+      const fileData = await axios.post(routes.uploadFile(), {multipart: true,  data: {
         username: userName,
-        password: passWord,
-      });
+        data: formData
+      }});
       const user = data.data as UserModel;
+      
       cookies.set(Auth.COOKIE_TOKEN, user.accessToken);
       await dispatch(updateCurrentUser(data));
       history.push(`/`);
@@ -46,6 +54,11 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassWord(event.target.value);
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files[0]; 
+    setFile(file); 
+}
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -68,7 +81,9 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
             onChange={handlePasswordChange}
           />
         </Form.Group>
-
+        <Form.Group>
+          <Form.File label="Choose user picture" onChange={handleChange}/>
+        </Form.Group>
         <Button variant="primary" type="submit">
           Submit
         </Button>

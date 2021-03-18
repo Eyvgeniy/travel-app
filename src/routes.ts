@@ -13,4 +13,6 @@ export default {
     [host, "api/user/auth/signup"].join("/"),
   checkValidity: (token: string): string => 
     [host, "api/user/auth/check"].join("/"),
+  uploadFile: (): string => 
+    [host, "api/user/user-photo"].join("/"),
 };

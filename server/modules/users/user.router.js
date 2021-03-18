@@ -1,7 +1,10 @@
 const express = require("express");
+const multer = require('multer');
 const wrap = require("../../common/errors/async-error-wrapper");
 const userService = require("./user.service");
 const { checkDuplicateUsernameOrEmail } = require("../../middleware/verifySignUp");
+
+const DIR = './public/personImages';
 
 const router = express.Router();
 router.use(wrap(async (req, res, next) => {
@@ -16,10 +19,12 @@ router.use(wrap(async (req, res, next) => {
 router.post(
     "/auth/signup",
     [
-        checkDuplicateUsernameOrEmail
+        checkDuplicateUsernameOrEmail,
     ],
     wrap(async (req, res) => {
-        await userService.signUp(req.body.username, req.body.password);
+        const url = req.protocol + '://' + req.get('host');
+        const profileImg = url + '/public/' + req.file.filename
+        await userService.signUp(req.body.username, req.body.password, profileImg);
         const data = await userService.signIn(req.body.username, req.body.password);
         res.status(200).send(data);
     })

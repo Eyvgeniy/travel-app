@@ -17,9 +17,9 @@ const getUserById = (id) => {
   return userRepo.getUserById(id);
 };
 
-const signUp = async (userName, password) => {
+const signUp = async (userName, password, profileImg) => {
   try{
-    await userRepo.saveUser(userName, bcrypt.hashSync(password, 8));
+    await userRepo.saveUser(userName, bcrypt.hashSync(password, 8), profileImg);
 
   }catch (error){
     throw new BadRequestError(error)
@@ -51,7 +51,8 @@ const signIn = async (userName, password) => {
       id: user._id,
       username: user.username,
       accessToken: token,
-      message: null
+      message: null,
+      image: user.image?.contentType
     };
 };
 
