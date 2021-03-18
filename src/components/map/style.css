@@ -1,0 +1,15 @@
+.leaflet-container {
+  width: 80%;
+  height: 40vh;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.capital-style {
+  fill: red;
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-width: 1px;
+}
+.capital-style:hover {
+  fill-opacity: 0;
+}
